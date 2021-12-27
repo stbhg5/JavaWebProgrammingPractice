@@ -14,7 +14,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 @SuppressWarnings("serial")
-public class CalculatorFrame extends JFrame implements ActionListener{
+public class CalculatorFrame extends JFrame implements ActionListener {
+	//윈도우 기능 갖기 위해 JFrame클래스 상속
+	//=과 clear 버튼 클릭 이벤트를 처리하는(리스너) ActionListener인터페이스 구현
+	
+	//선언
 	JTextField operand1 = new JTextField(4);
 	JTextField operand2 = new JTextField(4);
 	String[] operatorData = {"+", "-", "*", "/"};
@@ -23,6 +27,7 @@ public class CalculatorFrame extends JFrame implements ActionListener{
 	JTextField result = new JTextField(6);
 	JButton clear = new JButton("Clear");
 	
+	//생성자
 	public CalculatorFrame() {
 		this.setTitle("Lesson01-Exam01");
 		
@@ -30,8 +35,11 @@ public class CalculatorFrame extends JFrame implements ActionListener{
 		contentPane.setLayout(new BoxLayout(contentPane, BoxLayout.Y_AXIS));
 		
 		contentPane.add(Box.createVerticalGlue());
+		
+		//메소드 실행
 		contentPane.add(this.createInputForm());
 		contentPane.add(this.createToolBar());
+		
 		contentPane.add(Box.createVerticalGlue());
 		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -77,7 +85,7 @@ public class CalculatorFrame extends JFrame implements ActionListener{
 		this.result.setText("");
 	}
 	
-	
+	//=에 이벤트 건다.
 	private Box createInputForm() {
 		Box box = Box.createHorizontalBox();
 		box.setMaximumSize(new Dimension(300, 30));
@@ -91,6 +99,7 @@ public class CalculatorFrame extends JFrame implements ActionListener{
 		return box;
 	}
 	
+	//clear에 이벤트 건다.
 	private Box createToolBar() {
 		Box box = Box.createHorizontalBox();
 		box.add(clear);
@@ -100,6 +109,7 @@ public class CalculatorFrame extends JFrame implements ActionListener{
 	
 	public static void main(String[] args) {
 		CalculatorFrame app = new CalculatorFrame();
+		//생성자 실행
 		app.setVisible(true);
 	}
 }
