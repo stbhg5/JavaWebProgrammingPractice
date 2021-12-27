@@ -111,5 +111,6 @@ public class CalculatorFrame extends JFrame implements ActionListener {
 		CalculatorFrame app = new CalculatorFrame();
 		//생성자 실행
 		app.setVisible(true);
+		System.out.println("Test");
 	}
 }
