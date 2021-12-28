@@ -8,12 +8,12 @@ import java.util.Scanner;
 public class CalculatorServer {
 	private int port;
 	
-	public CalculatorServer(int port) {
+	public CalculatorServer(int port) {//8888
 		this.port = port;
 	}
 	
 	@SuppressWarnings("resource")
-  public void service() throws Exception {
+	public void service() throws Exception {
 		ServerSocket serverSocket = new ServerSocket(port);
 		System.out.println("CalculatorServer startup:");
 		
@@ -23,6 +23,7 @@ public class CalculatorServer {
 			try {
 				System.out.println("waiting client...");
 				
+				//클라이언트와 연결되면 클라이언트의 요청처리 → 무한반복
 				socket = serverSocket.accept();
 				System.out.println("connected to client.");
 				
@@ -36,6 +37,7 @@ public class CalculatorServer {
 	}
 	
 	private void processRequest(Socket socket) throws Exception {
+		//클라이언트 소켓으로부터 입출력 위한 스트림 객체 생성
 		Scanner in = new Scanner(socket.getInputStream());
 		PrintStream out = new PrintStream(socket.getOutputStream());
 			

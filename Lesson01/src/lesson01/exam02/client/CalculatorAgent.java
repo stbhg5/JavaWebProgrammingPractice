@@ -9,6 +9,7 @@ public class CalculatorAgent {
 	PrintStream out = null;
 	Scanner in = null;
 	
+	//소켓을 통해 입출력할 수 있도록 스트림 객체 준비
 	public CalculatorAgent(String ip, int port) throws Exception {
 		socket = new Socket(ip, port);
 		out = new PrintStream(socket.getOutputStream());

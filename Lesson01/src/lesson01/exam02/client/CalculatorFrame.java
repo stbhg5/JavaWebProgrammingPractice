@@ -15,7 +15,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 @SuppressWarnings("serial")
-public class CalculatorFrame extends JFrame implements ActionListener{
+public class CalculatorFrame extends JFrame implements ActionListener {
+	
+	//선언
 	CalculatorAgent calcAgent;
 	JTextField operand1 = new JTextField(4);
 	JTextField operator = new JTextField(2);
@@ -24,6 +26,7 @@ public class CalculatorFrame extends JFrame implements ActionListener{
 	JTextField result = new JTextField(6);
 	JButton clear = new JButton("Clear");
 	
+	//서버 연결하며 계산기 생성
 	public CalculatorFrame() {
 		try {
 			calcAgent = new CalculatorAgent("localhost", 8888);
