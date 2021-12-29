@@ -6,7 +6,7 @@ import java.net.Socket;
 public class CalculatorServer {
 	private int port;
 	
-	public CalculatorServer(int port) {
+	public CalculatorServer(int port) {//8888
 		this.port = port;
 	}
 	
@@ -21,6 +21,7 @@ public class CalculatorServer {
 				socket = serverSocket.accept();
 				System.out.println("connected to client.");
 				
+				//스레드를 상속받은 클래스 생성
 				new CalculatorWorker(socket).start();
 				
 			} catch (Throwable e) {

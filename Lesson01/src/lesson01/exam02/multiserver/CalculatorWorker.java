@@ -4,7 +4,9 @@ import java.io.PrintStream;
 import java.net.Socket;
 import java.util.Scanner;
 
-public class CalculatorWorker extends Thread {
+public class CalculatorWorker extends Thread {//스레드를 상속받아 스레드 기능을 수행
+	
+	//선언
 	static int count;
 	
 	Socket socket;
@@ -15,12 +17,13 @@ public class CalculatorWorker extends Thread {
 	public CalculatorWorker(Socket socket) throws Exception {
 		workerId = ++count;
 		this.socket = socket;
+		//입출력 위한 스트림 객체 준비
 		in = new Scanner(socket.getInputStream());
 		out = new PrintStream(socket.getOutputStream());
 	}
 	
 	@Override
-	public void run() {
+	public void run() {//스레드를 시작시키면 부모 스레드의 흐름으로부터 분리되어 별개의 흐름으로 run() 실행 → 부모스레드와 자식스레드 병행으로 작업 수행
 		System.out.println("[thread-" + workerId + "] processing the client request.");
 		
 		String operator = null;
