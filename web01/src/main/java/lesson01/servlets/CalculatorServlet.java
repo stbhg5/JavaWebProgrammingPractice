@@ -15,6 +15,7 @@ public class CalculatorServlet extends GenericServlet {
 	
 	@Override
 	public void service(ServletRequest request, ServletResponse response) throws ServletException, IOException {
+		//선언
 		String operator = request.getParameter("op");
 		int v1 = Integer.parseInt(request.getParameter("v1"));
 		int v2 = Integer.parseInt(request.getParameter("v2"));
@@ -23,6 +24,7 @@ public class CalculatorServlet extends GenericServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		
+		//연산
 		switch (operator) {
 		case "+":
 			result = v1 + v2;
@@ -44,6 +46,7 @@ public class CalculatorServlet extends GenericServlet {
 		}
 		
 		out.println(v1 + " " + operator + " " + v2 + " = " + result);
+		
 	}
 
 }
