@@ -12,3 +12,4 @@
 
 <h1>제 2장 웹 프로그래밍 기초 다지기<h1/><br/>
   <a href="https://stbhg5.tistory.com/20" >7. HTTP 프로토콜의 이해 (1)</a><br/>
+  <a href="https://stbhg5.tistory.com/21" >8. HTTP 프로토콜의 이해 (2)</a><br/>
