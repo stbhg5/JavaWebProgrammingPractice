@@ -18,7 +18,7 @@ public class CalculatorServlet extends HttpServlet {
 	private Hashtable<String, Operator> operatorTable = new Hashtable<String, Operator>();
 	
 	public CalculatorServlet() {
-		// 연산자 처리기를 등록
+		//연산자 처리기를 등록
 		operatorTable.put("+", new PlusOperator());
 		operatorTable.put("-", new MinusOperator());
 		operatorTable.put("*", new MultipleOperator());
@@ -28,12 +28,12 @@ public class CalculatorServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
 		
-		// 클라이언트에서 보낸 값을 꺼낸다(request에서 꺼냄).
+		//클라이언트에서 보낸 값을 꺼낸다(request에서 꺼냄).
 		String op = request.getParameter("op");
 		double v1 = Double.parseDouble(request.getParameter("v1"));
 		double v2 = Double.parseDouble(request.getParameter("v2"));
 		
-		// 클라이언트로 출력하기 위해 준비한다.
+		//클라이언트로 출력하기 위해 준비한다.
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		
@@ -42,7 +42,7 @@ public class CalculatorServlet extends HttpServlet {
 		out.println("<h1>계산 결과</h1>");
 		out.println("결과: ");
 		
-		// 연산을 수행한 후 결과를 클라이언트로 출력한다.
+		//연산을 수행한 후 결과를 클라이언트로 출력한다.
 		try {
 			Operator operator = operatorTable.get(op);
 			if (operator == null) {
