@@ -12,10 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/CalculatorServlet")
 public class CalculatorServlet extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
     
-	private Hashtable<String, Operator> operatorTable = 
-			new Hashtable<String, Operator>();
+	private Hashtable<String, Operator> operatorTable = new Hashtable<String, Operator>();
 	
 	public CalculatorServlet() {
 		// 연산자 처리기를 등록
@@ -26,12 +26,9 @@ public class CalculatorServlet extends HttpServlet {
 	}
 	
 	@Override
-	protected void doGet(
-			HttpServletRequest request, 
-			HttpServletResponse response) 
-			throws ServletException, IOException 
-	{
-		// 클라이언트에서 보낸 값을 꺼낸다.
+	protected void doGet(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
+		
+		// 클라이언트에서 보낸 값을 꺼낸다(request에서 꺼냄).
 		String op = request.getParameter("op");
 		double v1 = Double.parseDouble(request.getParameter("v1"));
 		double v2 = Double.parseDouble(request.getParameter("v2"));
@@ -40,6 +37,7 @@ public class CalculatorServlet extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		
+		//출력 내용
 		out.println("<html><body>");
 		out.println("<h1>계산 결과</h1>");
 		out.println("결과: ");
@@ -58,11 +56,11 @@ public class CalculatorServlet extends HttpServlet {
 		}
 		
 		out.println("</body></html>");
+		
 	}
 	
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
 }
