@@ -20,21 +20,19 @@ public class FileUploadServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	@Override
-	protected void doPost(
-			HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		out.println("<HTML><HEAD><TITLE>Multipart Test</TITLE></HEAD><BODY>");
 		
 		try {
-			String contextRootPath = 
-					this.getServletContext().getRealPath("/");
+			String contextRootPath = this.getServletContext().getRealPath("/");
 
 			DiskFileItemFactory diskFactory = new DiskFileItemFactory();
-			diskFactory.setRepository(
-					new File(contextRootPath + "/WEB-INF/temp"));
+			//diskFactory.setRepository(new File(contextRootPath + "/WEB-INF/temp")); //이 경로에선 보안으로 인해 사진이 안나온다.
+			diskFactory.setRepository(new File(contextRootPath + "/upload"));
 			ServletFileUpload upload = new ServletFileUpload(diskFactory);
 			@SuppressWarnings("unchecked")
 			List<FileItem> items = upload.parseRequest(request);
@@ -58,20 +56,16 @@ public class FileUploadServlet extends HttpServlet {
 		
 		out.println("</BODY></HTML>");
 	}
-
-	private void processUploadFile(
-			PrintWriter out, FileItem item, String contextRootPath) 
-			throws Exception {
+	
+	//파일 업로드
+	private void processUploadFile(PrintWriter out, FileItem item, String contextRootPath) throws Exception {
 		String name = item.getFieldName();
 		String fileName = item.getName();
 		String contentType = item.getContentType();
 		long fileSize = item.getSize();
 		
-		String uploadedFileName = 
-				System.currentTimeMillis() +
-				fileName.substring(fileName.lastIndexOf("."));
-		File uploadedFile = new File(
-				contextRootPath + "/upload/" + uploadedFileName);
+		String uploadedFileName = System.currentTimeMillis() + fileName.substring(fileName.lastIndexOf("."));
+		File uploadedFile = new File(contextRootPath + "/upload/" + uploadedFileName);
 		item.write(uploadedFile);
 		
 		out.println("<P>");
@@ -79,19 +73,15 @@ public class FileUploadServlet extends HttpServlet {
 		out.println("파일 이름:" + fileName + "<BR>");
 		out.println("콘텐츠 타입:" + contentType + "<BR>");
 		out.println("파일 크기:" + fileSize + "<BR>");
-		out.println("<IMG SRC='upload/" 
-				+ uploadedFileName 
-				+ "' width='300'><BR>");
+		out.println("<IMG SRC='upload/" + uploadedFileName + "' width='300'><BR>");
 		out.println("</P>");
 	}
-
-	private void processFormField(PrintWriter out, FileItem item) 
-		throws Exception{
+	
+	private void processFormField(PrintWriter out, FileItem item) throws Exception{
 		String name = item.getFieldName();
 		String value = item.getString("UTF-8");
 		
 		out.println(name + ":" + value + "<BR>");
 	}
-	
 	
 }

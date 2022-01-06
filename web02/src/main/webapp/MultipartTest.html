@@ -12,8 +12,8 @@
 입력폼의 method를 POST으로 지정하고,<br>
 enctype 속성의 값을 multipart/form-data로 설정합니다.
 </p>
-<form action="FileUploadServlet" method="post"
-		enctype="multipart/form-data">
+<!-- enctype 속성의 기본값은 "application/x-www-form-urlencoded" -->
+<form action="FileUploadServlet" method="post" enctype="multipart/form-data">
 사진: <input type="file" name="photo"><br> 
 설명: <textarea name="description" cols="50" rows="3"></textarea><br>
 <input type="submit" value="추가"><br>
