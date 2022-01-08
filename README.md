@@ -20,3 +20,5 @@
   
 <h1>제 3장 서블릿 프로그래밍<h1/><br/>
   <a href="https://stbhg5.tistory.com/25" >12. CGI프로그램과 서블릿</a><br/>
+  <a href="https://stbhg5.tistory.com/26" >13. 서블릿, JSP vs. Java EE vs. WAS</a><br/>
+  <a href="https://stbhg5.tistory.com/27?category=906090" >14. 웹 프로젝트 준비</a><br/>
