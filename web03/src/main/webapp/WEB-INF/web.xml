@@ -1,6 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
   <display-name>web03</display-name>
+  
+  <!-- 서블릿 배치 정보 -->
+  
+  <!-- 서블릿 선언 -->
+  <!-- 
+  servlet : 서블릿 별명과 서블릿 클래스명 설정
+  servlet-name : 서블릿 별명, 클래스 이름일 필요가 없고 공백을 포함해도 된다.
+  servlet-class : 패키지 이름을 포함한 서블릿 클래스명 (QName = Fully qualified name = 패키지명 + 클래스명)
+   -->
+  <servlet>
+  	<servlet-name>Hello</servlet-name>
+  	<servlet-class>lesson03.servlets.HelloWorld</servlet-class>
+  </servlet>
+  <!--
+  <servlet>
+  	<servlet-name>Calculator</servlet-name>
+  	<servlet-class>lesson03.servlets.CalculatorServlet</servlet-class>
+  </servlet>
+  -->
+  
+  <!-- 서블릿을 URL과 연결 -->
+  <!-- 
+  servlet-mapping : 서블릿과 URL을 매핑
+  servlet-name : servlet태그에서 정의한 서블릿 별명
+  url-pattern : 서블릿을 요청할 때 클라이언트가 사용할 URL 설정('/'는 컨텍스트 루트, 즉 웹 애플리케이션 루트를 의미)
+   -->
+  <servlet-mapping>
+  	<servlet-name>Hello</servlet-name>
+  	<url-pattern>/Hello</url-pattern>
+  </servlet-mapping>
+  <!--
+  <servlet-mapping>
+  	<servlet-name>Calculator</servlet-name>
+  	<url-pattern>/calc</url-pattern>
+  </servlet-mapping>
+  -->
+  
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.jsp</welcome-file>
@@ -9,4 +46,5 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
+  
 </web-app>
