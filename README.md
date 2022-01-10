@@ -23,3 +23,4 @@
   <a href="https://stbhg5.tistory.com/26" >13. 서블릿, JSP vs. Java EE vs. WAS</a><br/>
   <a href="https://stbhg5.tistory.com/27?category=906090" >14. 웹 프로젝트 준비</a><br/>
   <a href="https://stbhg5.tistory.com/28" >15. 서블릿 만들기 (1)</a><br/>
+  <a href="https://stbhg5.tistory.com/29" >16. 서블릿 만들기 (2)</a><br/>
