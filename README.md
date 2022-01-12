@@ -25,3 +25,4 @@
   <a href="https://stbhg5.tistory.com/28" >15. 서블릿 만들기 (1)</a><br/>
   <a href="https://stbhg5.tistory.com/29" >16. 서블릿 만들기 (2)</a><br/>
   <a href="https://stbhg5.tistory.com/30" >17. 웹 애플리케이션 배치 (1)</a><br/>
+  <a href="https://stbhg5.tistory.com/31" >18. 웹 애플리케이션 배치 (2)</a><br/>
