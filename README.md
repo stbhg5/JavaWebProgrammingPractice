@@ -27,3 +27,4 @@
   <a href="https://stbhg5.tistory.com/30" >17. 웹 애플리케이션 배치 (1)</a><br/>
   <a href="https://stbhg5.tistory.com/31" >18. 웹 애플리케이션 배치 (2)</a><br/>
   <a href="https://stbhg5.tistory.com/32" >19. GenericServlet의 사용 (1)</a><br/>
+  <a href="https://stbhg5.tistory.com/33" >20. GenericServlet의 사용 (2)</a><br/>
