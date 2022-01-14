@@ -7,7 +7,29 @@ import javax.servlet.GenericServlet;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebServlet;
 
+/*
+@WebServlet 어노테이션의 주요 속성
+
+name : 서블릿의 이름을 설정하는 속성. 기본값은 빈 문자열("").
+@WebServlet(name="서블릿이름")
+
+urlPatterns : 서블릿의 URL 목록을 설정하는 속성. 속성값은 String 배열, 기본값은 빈 배열({}).
+- 서블릿에 대해 1개의 URL을 설정하는 경우
+@WebServlet(urlPatterns="/calc")	//일반적인 문자열로 표기 가능
+@WebServlet(urlPatterns={"/calc"})	//중괄호를 사용하여 배열 표기
+- 서블릿에 대해 여러개의 URL을 설정하는 경우
+@WebServlet(urlPatterns={"/calc","calc.do","calculator.action"})
+
+value : urlPatterns과 같은 용도. 어노테이션 문법에서는 속성 이름이 'value'인 경우 속성 이름 없이 값만 설정할 수 있다.
+만약 value 속성 외에 다른 속성의 값도 함께 설정한다면 value 속성 이름 생략 불가.
+@WebServlet(value="/calc")
+@WebServlet("/calc")	//속성명 'value' 생략 가능
+@WebServlet(value="/calc",name="Calculator")	//가능
+@WebServlet("/calc",name="Calculator")			//오류
+*/
+@WebServlet("/calc")
 public class CalculatorServlet extends GenericServlet {
 	
 	private static final long serialVersionUID = 1L;
