@@ -31,3 +31,4 @@
   <br/><br/>
   
 <h1>제 4장 서블릿과 JDBC<h1/><br/>
+  <a href="https://stbhg5.tistory.com/34" >21. JDBC와 데이터베이스</a><br/>
