@@ -11,8 +11,15 @@
 	<!-- 필터 URL 매핑 -->
 		
 	<!-- 서블릿 선언 -->
-	
+	<!-- <servlet>
+		<servlet-name>MemberList</servlet-name>
+  		<servlet-class>spms.servlets.MemberListServlet</servlet-class>
+	</servlet> -->
 	<!-- 서블릿을 URL과 연결 -->
+	<!-- <servlet-mapping>
+	  	<servlet-name>MemberList</servlet-name>
+	  	<url-pattern>/member/list</url-pattern>
+	</servlet-mapping> -->
 
   <welcome-file-list>
 	<welcome-file>index.html</welcome-file>
