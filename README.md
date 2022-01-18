@@ -33,3 +33,4 @@
 <h1>제 4장 서블릿과 JDBC<h1/><br/>
   <a href="https://stbhg5.tistory.com/34" >21. JDBC와 데이터베이스</a><br/>
   <a href="https://stbhg5.tistory.com/35" >22. 데이터베이스에서 데이터 가져오기 (1)</a><br/>
+  <a href="https://stbhg5.tistory.com/36" >23. 데이터베이스에서 데이터 가져오기 (2)</a><br/>
