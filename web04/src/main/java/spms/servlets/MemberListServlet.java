@@ -60,6 +60,10 @@ public class MemberListServlet extends GenericServlet {
 			out.println("<html><head><title>회원목록</title></head>");
 			out.println("<body><h1>회원목록</h1>");
 			
+			//신규 회원 링크 - a태그의 링크 URL은 add다. 
+			out.println("<p><a href='add'>신규 회원</a></p>");
+			//a태그의 href에서 URL이 '/'로 시작하면 절대 경로, '/'로 시작하지 않으면 상대 경로.
+			
 			//ResultSet rs 반환객체를 통해 서버에 질의 결과 가져올 수 있다.
 			while(rs.next()) {//next()를 호출하면 서버에서 레코드(Record) 즉, 행(Row)을 가져온다. 서버에서 레코드를 받으면 true, 레코드가 없다면 false 반환.
 				//서버에서 레코드 받는동안 계속해서 회원 정보를 한 줄의 문자열로 만들어 출력.
