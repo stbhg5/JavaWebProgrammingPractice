@@ -2,6 +2,9 @@ package spms.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,6 +32,50 @@ public class MemberAddServlet extends HttpServlet {
 		out.println("<input type='reset' value='취소'>"); //reset : 입력폼을 초기화시키는 버튼
 		out.println("</form>");
 		out.println("</body></html>");
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		//JDBC 객체를 보관할 참조 변수 선언
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		//PreparedStatement : 반복적인 질의를 하거나, 입력 매개변수가 많은 경우 유용.
+		//이미지와 같은 바이너리 데이터를 저장, 변경 시 PreparedStatement만 가능.
+
+		try {//데이터베이스 관련 코드는 try 블록에 둔다.
+			DriverManager.registerDriver(new com.mysql.jdbc.Driver());
+			conn = DriverManager.getConnection(
+					"jdbc:mysql://localhost/studydb", //JDBC URL
+					"study",	// DBMS 사용자 아이디
+					"study");	// DBMS 사용자 암호
+			stmt = conn.prepareStatement(
+					"INSERT INTO MEMBERS(EMAIL,PWD,MNAME,CRE_DATE,MOD_DATE)"
+					+ " VALUES (?,?,?,NOW(),NOW())"); //? : 입력 매개변수(입력 매개변수의 번호는 1부터 시작)
+			
+			stmt.setString(1, request.getParameter("email"));
+			stmt.setString(2, request.getParameter("password"));
+			stmt.setString(3, request.getParameter("name"));
+			
+			//SQL문 서버에 보냄
+			stmt.executeUpdate();
+			
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<html><head><title>회원등록결과</title></head>");
+			out.println("<body>");
+			out.println("<p>등록 성공입니다!</p>");
+			out.println("</body></html>");
+			
+		} catch (Exception e) {//JDBC 프로그래밍에서 예외처리
+			throw new ServletException(e);
+			
+		} finally {//회원정보 입력의 성공여부에 상관없이 반드시 수행
+			//사용한 자원 해제
+			try {if (stmt != null) stmt.close();} catch(Exception e) {}
+			try {if (conn != null) conn.close();} catch(Exception e) {}
+		}
+
 	}
 	
 }
