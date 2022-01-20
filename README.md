@@ -34,4 +34,5 @@
   <a href="https://stbhg5.tistory.com/34" >21. JDBC와 데이터베이스</a><br/>
   <a href="https://stbhg5.tistory.com/35" >22. 데이터베이스에서 데이터 가져오기 (1)</a><br/>
   <a href="https://stbhg5.tistory.com/36" >23. 데이터베이스에서 데이터 가져오기 (2)</a><br/>
-  <a href="https://stbhg5.tistory.com/37" >24. HttpServlet으로 Get 요청 다루기</a><br/>
+  <a href="https://stbhg5.tistory.com/37" >24. HttpServlet으로 GET 요청 다루기</a><br/>
+  <a href="https://stbhg5.tistory.com/38" >25. HttpServlet으로 POST 요청 다루기</a><br/>
