@@ -65,10 +65,18 @@ public class MemberAddServlet extends HttpServlet {
 			
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
-			out.println("<html><head><title>회원등록결과</title></head>");
+			//out.println("<html><head><title>회원등록결과</title></head>");
+			out.println("<html><head><title>회원등록결과</title>");
+			//meta태그를 이용한 리프래시
+			out.println("<meta http-equiv='Refresh' content='1; url=list'>");
+			out.println("</head>");
 			out.println("<body>");
 			out.println("<p>등록 성공입니다!</p>");
 			out.println("</body></html>");
+			
+			//리프래시 정보를 응답 헤더에 추가
+			//response.addHeader("Refresh", "1;url=list");
+			//addHeader() : HTTP 응답 정보에 헤더를 추가하는 메소드
 			
 		} catch (Exception e) {//JDBC 프로그래밍에서 예외처리
 			throw new ServletException(e);
