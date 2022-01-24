@@ -38,3 +38,4 @@
   <a href="https://stbhg5.tistory.com/38" >25. HttpServlet으로 POST 요청 다루기</a><br/>
   <a href="https://stbhg5.tistory.com/39" >26. 요청 매개변수의 한글 깨짐 처리</a><br/>
   <a href="https://stbhg5.tistory.com/40" >27. 리프래시</a><br/>
+  <a href="https://stbhg5.tistory.com/41" >28. 리다이렉트</a><br/>
