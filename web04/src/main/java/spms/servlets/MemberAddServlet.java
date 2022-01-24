@@ -63,6 +63,7 @@ public class MemberAddServlet extends HttpServlet {
 			//SQL문 서버에 보냄
 			stmt.executeUpdate();
 			
+			/* 리다이렉트는 HTML을 출력하지 않음. 즉, 웹 브라우저로 본문을 보내지 않음.
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			//out.println("<html><head><title>회원등록결과</title></head>");
@@ -73,10 +74,14 @@ public class MemberAddServlet extends HttpServlet {
 			out.println("<body>");
 			out.println("<p>등록 성공입니다!</p>");
 			out.println("</body></html>");
+			*/
 			
 			//리프래시 정보를 응답 헤더에 추가
 			//response.addHeader("Refresh", "1;url=list");
 			//addHeader() : HTTP 응답 정보에 헤더를 추가하는 메소드
+			
+			//리다이렉트를 이용한 리프래시
+			response.sendRedirect("list");
 			
 		} catch (Exception e) {//JDBC 프로그래밍에서 예외처리
 			throw new ServletException(e);
