@@ -9,17 +9,42 @@
   <!-- 필터 선언 -->
 	
 	<!-- 필터 URL 매핑 -->
-		
+	
 	<!-- 서블릿 선언 -->
 	<!-- <servlet>
 		<servlet-name>MemberList</servlet-name>
   		<servlet-class>spms.servlets.MemberListServlet</servlet-class>
 	</servlet> -->
+	<servlet>
+		<servlet-name>MemberUpdateServlet</servlet-name>
+		<servlet-class>spms.servlets.MemberUpdateServlet</servlet-class>
+		<init-param>
+			<param-name>driver</param-name>
+			<param-value>com.mysql.jdbc.Driver</param-value>
+		</init-param>
+		<init-param>
+			<param-name>url</param-name>
+			<param-value>jdbc:mysql://localhost/studydb</param-value>
+		</init-param>
+		<init-param>
+			<param-name>username</param-name>
+			<param-value>study</param-value>
+		</init-param>
+		<init-param>
+			<param-name>password</param-name>
+			<param-value>study</param-value>
+		</init-param>
+	</servlet>
+	
 	<!-- 서블릿을 URL과 연결 -->
 	<!-- <servlet-mapping>
 	  	<servlet-name>MemberList</servlet-name>
 	  	<url-pattern>/member/list</url-pattern>
 	</servlet-mapping> -->
+	<servlet-mapping>
+		<servlet-name>MemberUpdateServlet</servlet-name>
+		<url-pattern>/member/update</url-pattern>
+	</servlet-mapping> 
 
   <welcome-file-list>
 	<welcome-file>index.html</welcome-file>

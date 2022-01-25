@@ -70,7 +70,8 @@ public class MemberListServlet extends GenericServlet {
 				//출력 문자열에서 칼럼들은 콤마(,)로 구분하고 문자열 끝에는 <br>태그를 붙여 줄바꿈.
 				out.println(//칼럼이름				//칼럼인덱스(1부터 시작)
 					rs.getInt("MNO") + "," +		//getInt(1)
-					rs.getString("MNAME") + "," +	//getString(2)
+					"<a href='update?no=" + rs.getInt("MNO") + "'>" + //회원 상세정보 출력 서블릿 URL 추가
+					rs.getString("MNAME") + "</a>," +	//getString(2)
 					rs.getString("EMAIL") + "," + 	//getString(3)
 					rs.getDate("CRE_DATE") + "<br>" //getDate(4)
 				);
