@@ -9,24 +9,25 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebInitParam;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @SuppressWarnings("serial")
 /* 애노테이션을 이용하여 서블릿 배치 정보 설정
- * - 서블릿 초기화 파라미터도 애노테이션으로 처리 
- *
+ * - 서블릿 초기화 파라미터도 애노테이션으로 처리
 @WebServlet(
   urlPatterns={"/member/update"},
-  initParams={
-	  @WebInitParam(name="driver",value="com.mysql.jdbc.Driver"),
+  initParams={//initParams : 서블릿 초기화 매개변수를 설정하는 속성, 속성값은 @WebInitParam의 배열
+	  @WebInitParam(name="driver",value="com.mysql.jdbc.Driver"), //name="매개변수 이름(필수)", value="매개변수 값(필수)", description="매개변수에 대한 설명(선택)"
 	  @WebInitParam(name="url",value="jdbc:mysql://localhost/studydb"),
 	  @WebInitParam(name="username",value="study"),
 	  @WebInitParam(name="password",value="study")
   }
 )
-*/
+ */
 public class MemberUpdateServlet extends HttpServlet {
 	
 	@Override
@@ -47,6 +48,7 @@ public class MemberUpdateServlet extends HttpServlet {
 						this.getInitParameter("username"),
 						this.getInitParameter("password"));
 			
+			//회원 상세 정보 출력
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(
 				"SELECT MNO,EMAIL,MNAME,CRE_DATE FROM MEMBERS" + 
@@ -58,12 +60,14 @@ public class MemberUpdateServlet extends HttpServlet {
 			out.println("<html><head><title>회원정보</title></head>");
 			out.println("<body><h1>회원정보</h1>");
 			out.println("<form action='update' method='post'>");
-			out.println("번호: <input type='text' name='no' value='" + request.getParameter("no") + "' readonly><br>");
+			out.println("번호: <input type='text' name='no' value='" + request.getParameter("no") + "' readonly><br>"); //회원번호 : 주 키(Primary Key) 칼럼이므로 값 변경 불가능. readonly속성은 값없이 속성 이름만 추가 가능.
 			out.println("이름: <input type='text' name='name'" + " value='" + rs.getString("MNAME")  + "'><br>");
 			out.println("이메일: <input type='text' name='email'" + " value='" + rs.getString("EMAIL")  + "'><br>");
 			out.println("가입일: " + rs.getDate("CRE_DATE") + "<br>");
 			out.println("<input type='submit' value='저장'>");
-			out.println("<input type='button' value='취소'" + " onclick='location.href=\"list\"'>");
+			out.println("<input type='button' value='취소'" + " onclick='location.href=\"list\"'>"); //onclick속성에 자바스크립트로 입력.
+			//location : 웹 브라우저의 페이지 이동을 관리하는 자바스크립트 객체
+			//href 프로퍼티 : 웹 브라우저가 출력할 페이지의 URL을 설정.
 			out.println("</form>");
 			out.println("</body></html>");
 			
@@ -83,13 +87,15 @@ public class MemberUpdateServlet extends HttpServlet {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		try {
+			//JDBC 드라이버를 로딩하고 데이터베이스 연결 시 서블릿 초기화 매개변수에서 해당 정보 가져와 처리.
 			Class.forName(this.getInitParameter("driver"));
 			conn = DriverManager.getConnection(
 						this.getInitParameter("url"),
 						this.getInitParameter("username"),
-						this.getInitParameter("password")); 
+						this.getInitParameter("password"));
+			
 			stmt = conn.prepareStatement(
-					"UPDATE MEMBERS SET EMAIL=?,MNAME=?,MOD_DATE=now()"
+					"UPDATE MEMBERS SET EMAIL=?,MNAME=?,MOD_DATE=now()" //now() : MySQL에서 제공하는 데이터베이스 함수. 현재 날짜와 시간 반환.
 					+ " WHERE MNO=?");
 			stmt.setString(1, request.getParameter("email"));
 			stmt.setString(2, request.getParameter("name"));

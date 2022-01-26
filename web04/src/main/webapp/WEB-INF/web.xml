@@ -44,7 +44,7 @@
 	<servlet-mapping>
 		<servlet-name>MemberUpdateServlet</servlet-name>
 		<url-pattern>/member/update</url-pattern>
-	</servlet-mapping> 
+	</servlet-mapping>
 
   <welcome-file-list>
 	<welcome-file>index.html</welcome-file>
