@@ -41,3 +41,4 @@
   <a href="https://stbhg5.tistory.com/41" >28. 리다이렉트</a><br/>
   <a href="https://stbhg5.tistory.com/42" >29. 서블릿 초기화 매개변수 (1)</a><br/>
   <a href="https://stbhg5.tistory.com/43" >30. 서블릿 초기화 매개변수 (2)</a><br/>
+  <a href="https://stbhg5.tistory.com/44" >31. 컨텍스트 초기화 매개변수</a><br/>
