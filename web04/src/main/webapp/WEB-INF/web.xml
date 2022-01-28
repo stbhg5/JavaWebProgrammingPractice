@@ -6,7 +6,25 @@
 		 version="3.1">
   <display-name>web04</display-name>
   
-  <!-- 필터 선언 -->
+  	<!-- 컨텍스트 초기화 파라미터 -->
+	<context-param>
+		<param-name>driver</param-name>
+		<param-value>com.mysql.jdbc.Driver</param-value>
+	</context-param>
+	<context-param>
+		<param-name>url</param-name>
+		<param-value>jdbc:mysql://localhost/studydb</param-value>
+	</context-param>
+	<context-param>
+		<param-name>username</param-name>
+		<param-value>study</param-value>
+	</context-param>
+	<context-param>
+		<param-name>password</param-name>
+		<param-value>study</param-value>
+	</context-param>
+  
+  	<!-- 필터 선언 -->
 	
 	<!-- 필터 URL 매핑 -->
 	

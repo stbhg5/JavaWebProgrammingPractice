@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
@@ -40,6 +41,7 @@ public class MemberUpdateServlet extends HttpServlet {
 			//Class.forName(JDBC 드라이버 클래스 이름)
 			//HttpServlet 클래스에서 상속받은 getInitParameter()로 서블릿 초기화 매개변수의 값을 꺼낸다.
 			//this.getInitParameter(매개변수 이름)
+			/*
 			Class.forName(this.getInitParameter("driver"));
 			
 			//초기화 매개변수를 이용하여 데이터베이스 연결
@@ -47,6 +49,17 @@ public class MemberUpdateServlet extends HttpServlet {
 						this.getInitParameter("url"),
 						this.getInitParameter("username"),
 						this.getInitParameter("password"));
+			*/
+			
+			//HttpServlet 클래스로부터 상속받은 getServletContext()를 호출하여 ServletContext 객체 준비
+			ServletContext sc = this.getServletContext();
+			
+			//getInitParameter()를 호출하면 web.xml에 선언된 컨텍스트 초기화 매개변수 값을 얻음
+			Class.forName(sc.getInitParameter("driver"));
+			conn = DriverManager.getConnection(
+						sc.getInitParameter("url"),
+						sc.getInitParameter("username"),
+						sc.getInitParameter("password"));
 			
 			//회원 상세 정보 출력
 			stmt = conn.createStatement();
@@ -65,6 +78,7 @@ public class MemberUpdateServlet extends HttpServlet {
 			out.println("이메일: <input type='text' name='email'" + " value='" + rs.getString("EMAIL")  + "'><br>");
 			out.println("가입일: " + rs.getDate("CRE_DATE") + "<br>");
 			out.println("<input type='submit' value='저장'>");
+			out.println("<input type='button' value='삭제' " + "onclick='location.href=\"delete?no=" + request.getParameter("no") + "\";'>");
 			out.println("<input type='button' value='취소'" + " onclick='location.href=\"list\"'>"); //onclick속성에 자바스크립트로 입력.
 			//location : 웹 브라우저의 페이지 이동을 관리하는 자바스크립트 객체
 			//href 프로퍼티 : 웹 브라우저가 출력할 페이지의 URL을 설정.
@@ -88,11 +102,21 @@ public class MemberUpdateServlet extends HttpServlet {
 		PreparedStatement stmt = null;
 		try {
 			//JDBC 드라이버를 로딩하고 데이터베이스 연결 시 서블릿 초기화 매개변수에서 해당 정보 가져와 처리.
+			/*
 			Class.forName(this.getInitParameter("driver"));
 			conn = DriverManager.getConnection(
 						this.getInitParameter("url"),
 						this.getInitParameter("username"),
 						this.getInitParameter("password"));
+			*/
+			
+			//JDBC 드라이버를 로딩하고 데이터베이스 연결 시 컨텍스트 초기화 매개변수에서 해당 정보 가져와 처리.
+			ServletContext sc = this.getServletContext();
+			Class.forName(sc.getInitParameter("driver"));
+			conn = DriverManager.getConnection(
+						sc.getInitParameter("url"),
+						sc.getInitParameter("username"),
+						sc.getInitParameter("password"));
 			
 			stmt = conn.prepareStatement(
 					"UPDATE MEMBERS SET EMAIL=?,MNAME=?,MOD_DATE=now()" //now() : MySQL에서 제공하는 데이터베이스 함수. 현재 날짜와 시간 반환.
