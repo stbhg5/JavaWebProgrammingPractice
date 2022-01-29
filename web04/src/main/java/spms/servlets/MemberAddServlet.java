@@ -39,7 +39,7 @@ public class MemberAddServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		//setCharacterEncoding() : 매개변수 값의 인코딩 형식 지정하는 메소드(이 메소드가 호출되기 전 getParameter()가 호출되면 아무 소용 없다.)
-		request.setCharacterEncoding("UTF-8");
+		//request.setCharacterEncoding("UTF-8");
 		
 		//JDBC 객체를 보관할 참조 변수 선언
 		Connection conn = null;
