@@ -25,8 +25,20 @@
 	</context-param>
   
   	<!-- 필터 선언 -->
+	<filter>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<filter-class>spms.filters.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
 	
-	<!-- 필터 URL 매핑 -->
+	<!-- 필터 URL 매핑 --> 
+	<filter-mapping>
+		<filter-name>CharacterEncodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 	
 	<!-- 서블릿 선언 -->
 	<!-- <servlet>

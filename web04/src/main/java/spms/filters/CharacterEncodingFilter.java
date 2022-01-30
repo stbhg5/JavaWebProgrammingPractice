@@ -11,11 +11,13 @@ import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.annotation.WebInitParam;
 
+/*
 @WebFilter(
 	urlPatterns="/*",
 	initParams={
 		@WebInitParam(name="encoding",value="UTF-8")
 	})
+*/
 public class CharacterEncodingFilter implements Filter {
 	
 	//FilterConfig : 필터 초기화 매개변수의 값을 꺼낼 수 있다.
