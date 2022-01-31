@@ -47,5 +47,5 @@
   <br/><br/>
   
 <h2>제 5장 MVC 아키텍처<h2/><br/>
-  
-  
+  <a href="https://stbhg5.tistory.com/47" >34. MVC 이해하기</a><br/>
+  <br/><br/>
