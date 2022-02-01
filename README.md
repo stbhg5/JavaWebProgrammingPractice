@@ -48,4 +48,5 @@
   
 <h2>제 5장 MVC 아키텍처<h2/><br/>
   <a href="https://stbhg5.tistory.com/47" >34. MVC 이해하기</a><br/>
+  <a href="https://stbhg5.tistory.com/48" >35. 뷰 컴포넌트와 JSP (1)</a><br/>
   <br/><br/>
