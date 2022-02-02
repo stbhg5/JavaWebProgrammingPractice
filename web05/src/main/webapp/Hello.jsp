@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Hello</title>
 </head>
 <body>
 <p>안녕하세요</p>
