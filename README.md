@@ -50,4 +50,4 @@
   <a href="https://stbhg5.tistory.com/47" >34. MVC 이해하기</a><br/>
   <a href="https://stbhg5.tistory.com/48" >35. 뷰 컴포넌트와 JSP (1)</a><br/>
   <a href="https://stbhg5.tistory.com/49" >36. 뷰 컴포넌트와 JSP (2)</a><br/>
-  <br/><br/>
+  <br/>
