@@ -29,7 +29,7 @@ if (request.getParameter("v1") != null) {
 		selected[3] = "selected";
 	}
 }
-%>    
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
 	"http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -50,7 +50,7 @@ if (request.getParameter("v1") != null) {
 	<input type="text" name="v2" size="4" value="<%=v2%>"> 
 	<input type="submit" value="=">
 	<input type="text" size="8" value="<%=result%>"><br>
-</form> 
+</form>
 </body>
 </html>
 <%! 
