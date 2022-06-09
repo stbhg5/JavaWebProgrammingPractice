@@ -53,6 +53,5 @@
   <a href="https://stbhg5.tistory.com/50" >37. JSP의 주요 구성 요소 (1)</a><br/>
   <a href="https://stbhg5.tistory.com/51" >38. JSP의 주요 구성 요소 (2)</a><br/>
   <a href="https://stbhg5.tistory.com/52" >39. JSP의 주요 구성 요소 (3)</a><br/>
+  <a href="https://stbhg5.tistory.com/53" >40. 서블릿에서 뷰 분리하기 (1)</a><br/>
   <br/><br/>
-
-  복습중..
