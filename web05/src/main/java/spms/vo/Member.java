@@ -52,5 +52,4 @@ public class Member {
 		this.modifiedDate = modifiedDate;
 		return this;
 	}
-	
 }
