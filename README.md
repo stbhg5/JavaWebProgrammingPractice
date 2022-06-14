@@ -57,4 +57,5 @@
   <a href="https://stbhg5.tistory.com/55" >41. 서블릿에서 뷰 분리하기 (2)</a><br/>
   <a href="https://stbhg5.tistory.com/56" >42. 서블릿에서 뷰 분리하기 (3)</a><br/>
   <a href="https://stbhg5.tistory.com/57" >43. 포워딩과 인클루딩 (1)</a><br/>
+  <a href="https://stbhg5.tistory.com/58" >44. 포워딩과 인클루딩 (2)</a><br/>
   <br/><br/>
