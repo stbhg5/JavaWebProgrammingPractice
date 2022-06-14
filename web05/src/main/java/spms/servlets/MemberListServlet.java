@@ -79,7 +79,10 @@ public class MemberListServlet extends HttpServlet {//extends GenericServlet
 			RequestDispatcher rd = request.getRequestDispatcher("/member/MemberList.jsp");
 			rd.include(request, response);
 		} catch (Exception e) {
-			throw new ServletException(e);
+			//throw new ServletException(e);
+			request.setAttribute("error", e); //예외 객체를 request에 보관
+			RequestDispatcher rd = request.getRequestDispatcher("/Error.jsp");
+			rd.forward(request, response);
 		} finally {
 			try {if (rs != null) rs.close();} catch(Exception e) {}
 			try {if (stmt != null) stmt.close();} catch(Exception e) {}
