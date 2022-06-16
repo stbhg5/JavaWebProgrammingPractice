@@ -59,4 +59,5 @@
   <a href="https://stbhg5.tistory.com/57" >43. 포워딩과 인클루딩 (1)</a><br/>
   <a href="https://stbhg5.tistory.com/58" >44. 포워딩과 인클루딩 (2)</a><br/>
   <a href="https://stbhg5.tistory.com/59" >45. 데이터 보관소 (1)</a><br/>
+  <a href="https://stbhg5.tistory.com/60" >46. 데이터 보관소 (2)</a><br/>
   <br/><br/>
