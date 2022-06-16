@@ -35,11 +35,14 @@ public class MemberListServlet extends HttpServlet {//extends GenericServlet
 		try {
 			//JDBC 드라이버를 로딩하고 데이터베이스 연결 시 컨텍스트 초기화 매개변수에서 해당 정보 가져와 처리.
 			ServletContext sc = this.getServletContext();
-			Class.forName(sc.getInitParameter("driver"));
+			//DB 커넥션 준비하는 코드 삭제
+			/*Class.forName(sc.getInitParameter("driver"));
 			conn = DriverManager.getConnection(
 						sc.getInitParameter("url"),
 						sc.getInitParameter("username"),
-						sc.getInitParameter("password"));
+						sc.getInitParameter("password"));*/
+			//ServletContext에 저장된 DB 커넥션 사용
+			conn = (Connection) sc.getAttribute("conn");
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(
 					"SELECT MNO,MNAME,EMAIL,CRE_DATE" + 
@@ -77,16 +80,17 @@ public class MemberListServlet extends HttpServlet {//extends GenericServlet
 			request.setAttribute("members", members);
 			//JSP로 출력을 위임한다.
 			RequestDispatcher rd = request.getRequestDispatcher("/member/MemberList.jsp");
-			rd.include(request, response);
+			rd.include(request, response); //인클루딩
 		} catch (Exception e) {
 			//throw new ServletException(e);
 			request.setAttribute("error", e); //예외 객체를 request에 보관
 			RequestDispatcher rd = request.getRequestDispatcher("/Error.jsp");
-			rd.forward(request, response);
+			rd.forward(request, response); //포워딩
 		} finally {
 			try {if (rs != null) rs.close();} catch(Exception e) {}
 			try {if (stmt != null) stmt.close();} catch(Exception e) {}
-			try {if (conn != null) conn.close();} catch(Exception e) {}
+			//DB 커넥션 객체를 서블릿에서 관리하지 않으므로 삭제
+			//try {if (conn != null) conn.close();} catch(Exception e) {}
 		}
 	}
 }
