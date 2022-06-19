@@ -61,4 +61,5 @@
   <a href="https://stbhg5.tistory.com/59" >45. 데이터 보관소 (1)</a><br/>
   <a href="https://stbhg5.tistory.com/60" >46. 데이터 보관소 (2)</a><br/>
   <a href="https://stbhg5.tistory.com/61" >47. 데이터 보관소 (3)</a><br/>
+  <a href="https://stbhg5.tistory.com/62" >48. 데이터 보관소 (4)</a><br/>
   <br/><br/>
