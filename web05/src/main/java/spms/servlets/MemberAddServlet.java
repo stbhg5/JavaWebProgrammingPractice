@@ -6,6 +6,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+//JSP 적용 - 입력폼 및 오류 처리 
 @WebServlet("/member/add")
 public class MemberAddServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -21,7 +23,7 @@ public class MemberAddServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html; charset=UTF-8");
-		PrintWriter out = response.getWriter();
+		/*PrintWriter out = response.getWriter();
 		out.println("<html><head><title>회원 등록</title></head>");
 		out.println("<body><h1>회원 등록</h1>");
 		out.println("<form action='add' method='post'>"); //action : 실행할 서블릿 URL 주소, method : 서버에 요청하는 방식 지정
@@ -32,7 +34,9 @@ public class MemberAddServlet extends HttpServlet {
 		out.println("<input type='submit' value='추가'>"); //submit : 서버에 요청을 보내는 버튼
 		out.println("<input type='reset' value='취소'>"); //reset : 입력폼을 초기화시키는 버튼
 		out.println("</form>");
-		out.println("</body></html>");
+		out.println("</body></html>");*/
+		RequestDispatcher rd = request.getRequestDispatcher("/member/MemberForm.jsp");
+		rd.forward(request, response);
 	}
 	
 	@Override
@@ -61,7 +65,11 @@ public class MemberAddServlet extends HttpServlet {
 			//리다이렉트를 이용한 리프래시
 			response.sendRedirect("list");
 		} catch (Exception e) {//JDBC 프로그래밍에서 예외처리
-			throw new ServletException(e);
+			//throw new ServletException(e);
+			e.printStackTrace();
+			request.setAttribute("error", e);
+			RequestDispatcher rd = request.getRequestDispatcher("/Error.jsp");
+			rd.forward(request, response);
 		} finally {//회원정보 입력의 성공여부에 상관없이 반드시 수행
 			//사용한 자원 해제
 			try {if (stmt != null) stmt.close();} catch(Exception e) {}

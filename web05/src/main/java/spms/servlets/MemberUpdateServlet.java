@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebInitParam;
@@ -16,6 +17,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import spms.vo.Member;
+
+//JSP 적용 - 변경폼 및 예외 처리
 @WebServlet("/member/update")
 public class MemberUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -42,7 +46,8 @@ public class MemberUpdateServlet extends HttpServlet {
 			rs = stmt.executeQuery(
 				"SELECT MNO,EMAIL,MNAME,CRE_DATE FROM MEMBERS" + 
 				" WHERE MNO=" + request.getParameter("no"));	
-			rs.next();
+			
+			/*rs.next();
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
 			out.println("<html><head><title>회원정보</title></head>");
@@ -58,9 +63,24 @@ public class MemberUpdateServlet extends HttpServlet {
 			//location : 웹 브라우저의 페이지 이동을 관리하는 자바스크립트 객체
 			//href 프로퍼티 : 웹 브라우저가 출력할 페이지의 URL을 설정.
 			out.println("</form>");
-			out.println("</body></html>");
+			out.println("</body></html>");*/
+			
+			if(rs.next()) {
+				request.setAttribute("member",new Member().setNo(rs.getInt("MNO"))
+														  .setEmail(rs.getString("EMAIL"))
+														  .setName(rs.getString("MNAME"))
+														  .setCreatedDate(rs.getDate("CRE_DATE")));
+			}else {
+				throw new Exception("해당 번호의 회원을 찾을 수 없습니다.");
+			}
+			RequestDispatcher rd = request.getRequestDispatcher("/member/MemberUpdateForm.jsp");
+			rd.forward(request, response);
 		} catch (Exception e) {
-			throw new ServletException(e);
+			//throw new ServletException(e);
+			e.printStackTrace();
+			request.setAttribute("error", e);
+			RequestDispatcher rd = request.getRequestDispatcher("/Error.jsp");
+			rd.forward(request, response);
 		} finally {
 			try {if (rs != null) rs.close();} catch(Exception e) {}
 			try {if (stmt != null) stmt.close();} catch(Exception e) {}
@@ -91,7 +111,11 @@ public class MemberUpdateServlet extends HttpServlet {
 			stmt.executeUpdate();
 			response.sendRedirect("list");
 		} catch (Exception e) {
-			throw new ServletException(e);
+			//throw new ServletException(e);
+			e.printStackTrace();
+			request.setAttribute("error", e);
+			RequestDispatcher rd = request.getRequestDispatcher("/Error.jsp");
+			rd.forward(request, response);
 		} finally {
 			try {if (stmt != null) stmt.close();} catch(Exception e) {}
 			//try {if (conn != null) conn.close();} catch(Exception e) {}
