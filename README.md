@@ -67,5 +67,6 @@
   <a href="https://stbhg5.tistory.com/65" >51. JSP 액션 태그의 사용 (2)</a><br/>
   <a href="https://stbhg5.tistory.com/66" >52. EL 사용하기 (1)</a><br/>
   <a href="https://stbhg5.tistory.com/67" >53. EL 사용하기 (2)</a><br/>
+  <a href="https://stbhg5.tistory.com/68" >54. EL 사용하기 (3)</a><br/>
   <br/><br/>
   
