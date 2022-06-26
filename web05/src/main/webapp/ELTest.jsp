@@ -80,5 +80,62 @@ pageContext.setAttribute("myRB", myRB.getObject("OK"));
 ${'리소스번들 객체에서 값 꺼내기 :'} ${myRB}
 <%//${myRB.OK}는 안됨..%>
 <br/><br/><br/><br/><br/>
+
+<%//EL표현식 - 산술 연산자%>
+<%-- '${' 앞에 '\'가 붙으면 '${'은 EL 문법이 아닌 일반 텍스트로 취급한다. --%>
+\${10 + 20} = ${10 + 20}<br/>
+\${10 - 20} = ${10 - 20}<br/>
+\${10 * 20} = ${10 * 20}<br/>
+\${10 / 20} = ${10 / 20}<br/>
+\${10 div 20} = ${10 div 20}<br/>
+\${10 % 20} = ${10 % 20}<br/>
+\${10 mod 20} = ${10 mod 20}<br/>
+<br/><br/><br/><br/><br/>
+
+<%//EL표현식 - 논리 연산자%>
+\${true && false} = ${true && false}<br/>
+\${true and false} = ${true and false}<br/>
+\${true || false} = ${true || false}<br/>
+\${true or false} = ${true or false}<br/>
+\${not true} = ${not true}<br/>
+\${!true} = ${!true}<br/>
+<br/><br/><br/><br/><br/>
+
+<%//EL표현식 - 관계 연산자%>
+\${10 == 11} = ${10 == 11}<br/>
+\${10 eq 11} = ${10 eq 11}<br/>
+\${10 != 11} = ${10 != 11}<br/>
+\${10 ne 11} = ${10 ne 11}<br/>
+\${10 < 11} = ${10 < 11}<br/>
+\${10 lt 11} = ${10 lt 11}<br/>
+\${10 > 11} = ${10 > 11}<br/>
+\${10 gt 11} = ${10 gt 11}<br/>
+\${10 <= 11} = ${10 <= 11}<br/>
+\${10 le 11} = ${10 le 11}<br/>
+\${10 >= 11} = ${10 >= 11}<br/>
+\${10 ge 11} = ${10 ge 11}<br/>
+<br/><br/><br/><br/><br/>
+
+<%
+//EL표현식 - empty
+//pageContext에 값 준비
+pageContext.setAttribute("title", "EL 연산자!");
+%>
+\${empty title} = ${empty title}<br/>
+\${empty title2} = ${empty title2}<br/>
+<br/><br/><br/><br/><br/>
+
+<%//EL표현식 - 조건%>
+\${10 > 20 ? "크다" : "작다"} = ${10 > 20 ? "크다" : "작다"}<br/>
+<br/><br/><br/><br/><br/>
+
+<%
+//EL표현식 - 예약키워드
+//pageContext에 값 준비
+pageContext.setAttribute("ne", "오호라!");
+%>
+<%-- pageContext에서 값 꺼내기 --%>
+<%-- ${ne} --%>
+<br/><br/><br/><br/><br/>
 </body>
 </html>
