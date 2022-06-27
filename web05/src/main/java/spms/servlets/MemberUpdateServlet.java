@@ -66,10 +66,10 @@ public class MemberUpdateServlet extends HttpServlet {
 			out.println("</body></html>");*/
 			
 			if(rs.next()) {
-				request.setAttribute("member",new Member().setNo(rs.getInt("MNO"))
-														  .setEmail(rs.getString("EMAIL"))
-														  .setName(rs.getString("MNAME"))
-														  .setCreatedDate(rs.getDate("CRE_DATE")));
+				request.setAttribute("member", new Member().setNo(rs.getInt("MNO"))
+														   .setEmail(rs.getString("EMAIL"))
+														   .setName(rs.getString("MNAME"))
+														   .setCreatedDate(rs.getDate("CRE_DATE")));
 			}else {
 				throw new Exception("해당 번호의 회원을 찾을 수 없습니다.");
 			}
