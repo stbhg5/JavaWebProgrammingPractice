@@ -1,11 +1,11 @@
-<%@page import="el.resourcebundle.MyResourceBundle_ko_KR"%>
+<%@ page import="el.resourcebundle.MyResourceBundle_ko_KR"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List"%>
 <%@ page import="java.util.LinkedList"%>
 <%@ page import="java.util.Map"%>
 <%@ page import="java.util.HashMap"%>
 <%@ page import="spms.vo.Member"%>
-<%@page import="java.util.ResourceBundle"%>
+<%@ page import="java.util.ResourceBundle"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
