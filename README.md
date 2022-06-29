@@ -70,5 +70,6 @@
   <a href="https://stbhg5.tistory.com/68" >54. EL 사용하기 (3)</a><br/>
   <a href="https://stbhg5.tistory.com/69" >55. EL 사용하기 (4)</a><br/>
   <a href="https://stbhg5.tistory.com/70" >56. JSTL 사용하기 (1)</a><br/>
+  <a href="https://stbhg5.tistory.com/71" >57. JSTL 사용하기 (2)</a><br/>
   <br/><br/>
   
