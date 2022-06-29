@@ -1,4 +1,3 @@
-<%@ page import="el.resourcebundle.MyResourceBundle_ko_KR"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List"%>
 <%@ page import="java.util.LinkedList"%>
@@ -6,12 +5,13 @@
 <%@ page import="java.util.HashMap"%>
 <%@ page import="spms.vo.Member"%>
 <%@ page import="java.util.ResourceBundle"%>
+<%@ page import="el.resourcebundle.MyResourceBundle_ko_KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>EL Test</title>
 </head>
 <body>
 <%//EL표현식 - 리터럴 표현식%>
