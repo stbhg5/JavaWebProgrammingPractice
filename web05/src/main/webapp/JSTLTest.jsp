@@ -68,5 +68,46 @@ pageContext.setAttribute("member", member);
 <c:set target="${member}" property="name" value="임꺽정"/>
 10) ${member.name}<br>
 <br/><br/><br/><br/><br/>
+
+<%//<c:remove>태그 예제%>
+<h2>c:remove 태그</h2>
+<h3>보관소에 저장된 값 제거</h3>
+<% pageContext.setAttribute("username1", "홍길동"); %>
+1) ${username1}<br>
+<c:remove var="username1"/>
+2) ${username1}<br>
+<br/><br/><br/><br/><br/>
+
+<%//<c:if>태그 예제%>
+<h2>c:if 태그</h2>
+<c:if test="${10 > 20}" var="result1">
+1) 10은 20보다 크다.<br>
+</c:if>
+2) ${result1}<br>
+
+<c:if test="${10 < 20}" var="result2">
+3) 10은 20보다 크다.<br>
+</c:if>
+4) ${result2}<br>
+<br/><br/><br/><br/><br/>
+
+<%//<c:c:choose>태그 예제%>
+<h2>c:choose 태그</h2>
+<c:set var="userid" value="admin"/>
+<c:choose>
+  <c:when test="${userid == 'hong'}">
+    홍길동님 반갑습니다.
+  </c:when>
+  <c:when test="${userid == 'leem'}">
+    임꺽정님 반갑습니다.
+  </c:when>
+  <c:when test="${userid == 'admin'}">
+    관리자 전용 페이지입니다.
+  </c:when>
+  <c:otherwise>
+    등록되지 않은 사용자입니다.
+  </c:otherwise>
+</c:choose>
+<br/><br/><br/><br/><br/>
 </body>
 </html>
