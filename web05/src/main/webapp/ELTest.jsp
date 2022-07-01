@@ -135,7 +135,7 @@ pageContext.setAttribute("title", "EL 연산자!");
 pageContext.setAttribute("ne", "오호라!");
 %>
 <%-- pageContext에서 값 꺼내기 --%>
-<%-- ${ne} --%>
+${ne}
 <br/><br/><br/><br/><br/>
 </body>
 </html>
