@@ -109,5 +109,17 @@ pageContext.setAttribute("member", member);
   </c:otherwise>
 </c:choose>
 <br/><br/><br/><br/><br/>
+
+<%//<c:c:forEach>태그 예제%>
+<h2>c:forEach 태그</h2>
+
+<h3>반복문 - 배열</h3>
+<% pageContext.setAttribute("nameList", 
+  new String[]{"홍길동", "임꺽정", "일지매"}); %>
+<ul>
+<c:forEach var="name" items="${nameList}">
+	<li>${name}</li>	
+</c:forEach>
+</ul>
 </body>
 </html>
