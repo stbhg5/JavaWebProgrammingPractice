@@ -72,5 +72,6 @@
   <a href="https://stbhg5.tistory.com/70" >56. JSTL 사용하기 (1)</a><br/>
   <a href="https://stbhg5.tistory.com/71" >57. JSTL 사용하기 (2)</a><br/>
   <a href="https://stbhg5.tistory.com/72" >58. JSTL 사용하기 (3)</a><br/>
+  <a href="https://stbhg5.tistory.com/73" >59. JSTL 사용하기 (4)</a><br/>
   <br/><br/>
   
