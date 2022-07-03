@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.util.ArrayList"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -91,7 +92,7 @@ pageContext.setAttribute("member", member);
 4) ${result2}<br>
 <br/><br/><br/><br/><br/>
 
-<%//<c:c:choose>태그 예제%>
+<%//<c:choose>태그 예제%>
 <h2>c:choose 태그</h2>
 <c:set var="userid" value="admin"/>
 <c:choose>
@@ -110,16 +111,82 @@ pageContext.setAttribute("member", member);
 </c:choose>
 <br/><br/><br/><br/><br/>
 
-<%//<c:c:forEach>태그 예제%>
+<%//<c:forEach>태그 예제%>
 <h2>c:forEach 태그</h2>
 
 <h3>반복문 - 배열</h3>
-<% pageContext.setAttribute("nameList", 
-  new String[]{"홍길동", "임꺽정", "일지매"}); %>
+<% pageContext.setAttribute("nameList", new String[] {"홍길동", "임꺽정", "일지매"}); %>
 <ul>
 <c:forEach var="name" items="${nameList}">
 	<li>${name}</li>	
 </c:forEach>
 </ul>
+<br/><br/><br/><br/><br/>
+
+<h3>반복문 - 배열의 시작 인덱스와 종료 인덱스 지정</h3>
+<% pageContext.setAttribute("nameList2", 
+  new String[]{"홍길동", "임꺽정", "일지매", "주먹대장", "똘이장군"}); %>
+<ul>
+<c:forEach var="name" items="${nameList2}" begin="2" end="3">
+	<li>${name}</li>	
+</c:forEach>
+</ul>
+<br/><br/><br/><br/><br/>
+
+<h3>반복문 - ArrayList 객체</h3>
+<% 
+ArrayList<String> nameList3 = new ArrayList<String>();
+nameList3.add("홍길동");
+nameList3.add("임꺽정");
+nameList3.add("일지매");
+nameList3.add("주먹대장");
+nameList3.add("똘이장군");
+pageContext.setAttribute("nameList3", nameList3); 
+%>
+<ul>
+<c:forEach var="name" items="${nameList3}">
+	<li>${name}</li>	
+</c:forEach>
+</ul>
+<br/><br/><br/><br/><br/>
+
+<h3>반복문 - 콤마로 구분된 문자열</h3>
+<% pageContext.setAttribute("nameList4", "홍길동,임꺽정,일지매,주먹대장,똘이장군"); %>
+<ul>
+<c:forEach var="name" items="${nameList4}">
+	<li>${name}</li>	
+</c:forEach>
+</ul>
+<br/><br/><br/><br/><br/>
+
+<h3>반복문 - 특정 횟수 만큼 반복</h3>
+<ul>
+<c:forEach var="no" begin="1" end="6">
+	<li><a href="jstl0${no}.jsp">JSTL 예제 ${no}</a></li>	
+</c:forEach>
+</ul>
+<br/><br/><br/><br/><br/>
+
+<%//<c:forTokens>태그 예제%>
+<h2>c:forTokens 태그</h2>
+
+<% pageContext.setAttribute("tokens","v1=20&v2=30&op=+"); %>
+<ul>
+<c:forTokens var="item" items="${tokens}" delims="&">
+	<li>${item}</li>	
+</c:forTokens>
+</ul>
+<br/><br/><br/><br/><br/>
+
+<%//<c:url>태그 예제%>
+<h2>c:url 태그</h2>
+
+<c:url var="calcUrl" value="http://localhost:9999/web05/calc/Calculator.jsp">
+	<c:param name="v1" value="20"/>
+	<c:param name="v2" value="30"/>
+	<c:param name="op" value="+"/>
+</c:url>
+<a href="${calcUrl}">계산하기</a>
+<br/><br/><br/><br/><br/>
 </body>
 </html>
