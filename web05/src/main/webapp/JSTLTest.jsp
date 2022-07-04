@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -187,6 +188,41 @@ pageContext.setAttribute("nameList3", nameList3);
 	<c:param name="op" value="+"/>
 </c:url>
 <a href="${calcUrl}">계산하기</a>
+<br/><br/><br/><br/><br/>
+
+<%//<c:import>태그 예제%>
+<h2>c:import 태그</h2>
+
+<h3>RSS 피드 가져오기</h3>
+<textarea rows="10" cols="80">
+	<%-- <c:import url="http://www.zdnet.co.kr/Include2/ZDNetKorea_News.xml"/> --%>
+	<c:import url="https://zdnet.co.kr/view/?no=20220704163158.xml"/>
+</textarea>
+
+<h3>RSS 피드 가져오기 - 보관소에 저장</h3>
+<%-- <c:import var="zdnetRSS" url="http://www.zdnet.co.kr/Include2/ZDNetKorea_News.xml"/> --%>
+<c:import var="zdnetRSS" url="https://zdnet.co.kr/view/?no=20220704163158.xml"/>
+<textarea rows="10" cols="80">${zdnetRSS}</textarea>
+<br/><br/><br/><br/><br/>
+
+<%//<c:redirect>태그 예제%>
+<h2>c:redirect 태그</h2>
+<a href="RedirectTagTest.jsp">리다이렉트 테스트</a>
+<br/><br/><br/><br/><br/>
+
+<%//<fmt:parseDate>태그 예제%>
+<h2>날짜 다루기</h2>
+<h3>fmt:parseDate 태그</h3>
+<code>
+<fmt:parseDate var="date1" value="2013-11-16" pattern="yyyy-MM-dd"/>
+</code>
+<fmt:parseDate var="date1" value="2013-11-16" pattern="yyyy-MM-dd"/>
+${date1}
+<br/><br/><br/><br/><br/>
+
+<%//<fmt:formatDate>태그 예제%>
+<h3>fmt:formatDate 태그</h3>
+<fmt:formatDate value="${date1}" pattern="MM/dd/yy"/>
 <br/><br/><br/><br/><br/>
 </body>
 </html>
