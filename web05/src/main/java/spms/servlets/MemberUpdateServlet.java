@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import spms.dao.MemberDao;
 import spms.vo.Member;
 
 //JSP 적용 - 변경폼 및 예외 처리
@@ -42,11 +43,15 @@ public class MemberUpdateServlet extends HttpServlet {
 			//ServletContext에 저장된 DB 커넥션 사용
 			conn = (Connection) sc.getAttribute("conn");
 			//회원 상세 정보 출력
-			stmt = conn.createStatement();
+			/*stmt = conn.createStatement();
 			rs = stmt.executeQuery(
 				"SELECT MNO,EMAIL,MNAME,CRE_DATE FROM MEMBERS" + 
-				" WHERE MNO=" + request.getParameter("no"));	
-			
+				" WHERE MNO=" + request.getParameter("no"));*/
+			MemberDao memberDao = new MemberDao();
+		    memberDao.setConnection(conn);
+		       
+		    Member member = memberDao.selectOne(Integer.parseInt(request.getParameter("no")));
+		    request.setAttribute("member", member);
 			/*rs.next();
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter out = response.getWriter();
@@ -65,14 +70,14 @@ public class MemberUpdateServlet extends HttpServlet {
 			out.println("</form>");
 			out.println("</body></html>");*/
 			
-			if(rs.next()) {
+			/*if(rs.next()) {
 				request.setAttribute("member", new Member().setNo(rs.getInt("MNO"))
 														   .setEmail(rs.getString("EMAIL"))
 														   .setName(rs.getString("MNAME"))
 														   .setCreatedDate(rs.getDate("CRE_DATE")));
 			}else {
 				throw new Exception("해당 번호의 회원을 찾을 수 없습니다.");
-			}
+			}*/
 			RequestDispatcher rd = request.getRequestDispatcher("/member/MemberUpdateForm.jsp");
 			rd.forward(request, response);
 		} catch (Exception e) {
@@ -102,13 +107,18 @@ public class MemberUpdateServlet extends HttpServlet {
 						sc.getInitParameter("password"));*/
 			//ServletContext에 저장된 DB 커넥션 사용
 			conn = (Connection) sc.getAttribute("conn");
-			stmt = conn.prepareStatement(
+			MemberDao memberDao = new MemberDao();
+		    memberDao.setConnection(conn);
+		    memberDao.update(new Member().setNo(Integer.parseInt(request.getParameter("no")))
+		    	      					 .setName(request.getParameter("name"))
+		    	      					 .setEmail(request.getParameter("email")));
+			/*stmt = conn.prepareStatement(
 					"UPDATE MEMBERS SET EMAIL=?,MNAME=?,MOD_DATE=now()" //now() : MySQL에서 제공하는 데이터베이스 함수. 현재 날짜와 시간 반환.
 					+ " WHERE MNO=?");
 			stmt.setString(1, request.getParameter("email"));
 			stmt.setString(2, request.getParameter("name"));
 			stmt.setInt(3, Integer.parseInt(request.getParameter("no")));
-			stmt.executeUpdate();
+			stmt.executeUpdate();*/
 			response.sendRedirect("list");
 		} catch (Exception e) {
 			//throw new ServletException(e);

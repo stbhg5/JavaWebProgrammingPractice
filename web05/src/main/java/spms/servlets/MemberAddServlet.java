@@ -14,6 +14,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import spms.dao.MemberDao;
+import spms.vo.Member;
+
 //JSP 적용 - 입력폼 및 오류 처리 
 @WebServlet("/member/add")
 public class MemberAddServlet extends HttpServlet {
@@ -54,14 +57,20 @@ public class MemberAddServlet extends HttpServlet {
 						sc.getInitParameter("password"));*/
 			//ServletContext에 저장된 DB 커넥션 사용
 			conn = (Connection) sc.getAttribute("conn");
-			stmt = conn.prepareStatement(
+			MemberDao memberDao = new MemberDao();
+		    memberDao.setConnection(conn);
+			/*stmt = conn.prepareStatement(
 					"INSERT INTO MEMBERS(EMAIL,PWD,MNAME,CRE_DATE,MOD_DATE)"
 					+ " VALUES (?,?,?,NOW(),NOW())"); //? : 입력 매개변수(입력 매개변수의 번호는 1부터 시작)
 			stmt.setString(1, request.getParameter("email"));
 			stmt.setString(2, request.getParameter("password"));
 			stmt.setString(3, request.getParameter("name"));
 			//SQL문 서버에 보냄
-			stmt.executeUpdate();
+			stmt.executeUpdate();*/
+		    memberDao.insert(new Member()
+		             .setEmail(request.getParameter("email"))
+		             .setPassword(request.getParameter("password"))
+		             .setName(request.getParameter("name")));
 			//리다이렉트를 이용한 리프래시
 			response.sendRedirect("list");
 		} catch (Exception e) {//JDBC 프로그래밍에서 예외처리

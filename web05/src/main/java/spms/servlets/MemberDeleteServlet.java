@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import spms.dao.MemberDao;
+
 @WebServlet("/member/delete")
 public class MemberDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -30,10 +32,13 @@ public class MemberDeleteServlet extends HttpServlet {
 						sc.getInitParameter("password"));*/
 			//ServletContext에 저장된 DB 커넥션 사용
 			conn = (Connection) sc.getAttribute("conn");
-			stmt = conn.createStatement();
+			MemberDao memberDao = new MemberDao();
+		    memberDao.setConnection(conn);
+		    memberDao.delete(Integer.parseInt(request.getParameter("no")));
+			/*stmt = conn.createStatement();
 			stmt.executeUpdate(
 					"DELETE FROM MEMBERS WHERE MNO=" + 
-					request.getParameter("no"));
+					request.getParameter("no"));*/
 			response.sendRedirect("list");
 		} catch (Exception e) {
 			//throw new ServletException(e);

@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import spms.dao.MemberDao;
 import spms.vo.Member;
 
 //UI 출력 코드를 제거하고, UI 생성 및 출력을 JSP에게 위임한다.
@@ -42,13 +43,18 @@ public class MemberListServlet extends HttpServlet {//extends GenericServlet
 						sc.getInitParameter("username"),
 						sc.getInitParameter("password"));*/
 			//ServletContext에 저장된 DB 커넥션 사용
-			conn = (Connection) sc.getAttribute("conn");
+			conn = (Connection)sc.getAttribute("conn");
+			
+			MemberDao memberDao = new MemberDao();
+			memberDao.setConnection(conn); //셋터 메서드 호출
+			/*
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(
 					"SELECT MNO,MNAME,EMAIL,CRE_DATE" + 
 					" FROM MEMBERS" +
 					" ORDER BY MNO ASC");
 			response.setContentType("text/html; charset=UTF-8");
+			*/
 			/*
 			PrintWriter out = response.getWriter();
 			out.println("<html><head><title>회원목록</title></head>");
@@ -67,6 +73,7 @@ public class MemberListServlet extends HttpServlet {//extends GenericServlet
 			}
 			out.println("</body></html>");
 			*/
+			/*
 			ArrayList<Member> members = new ArrayList<Member>();
 			//데이터베이스에서 회원 정보를 가져와 Member에 담는다.
 			//그리고 Member객체를 ArrayList에 추가한다.
@@ -76,8 +83,13 @@ public class MemberListServlet extends HttpServlet {//extends GenericServlet
 										.setEmail(rs.getString("EMAIL"))
 										.setCreatedDate(rs.getDate("CRE_DATE"))	);
 			}
+			*/
 			//request에 회원 목록 데이터 보관한다.
-			request.setAttribute("members", members);
+			//request.setAttribute("members", members);
+			
+			//DAO의 selectList() 메서드 반환값을 request에 담기
+			request.setAttribute("members", memberDao.selectList());
+			response.setContentType("text/html; charset=UTF-8");
 			//JSP로 출력을 위임한다.
 			RequestDispatcher rd = request.getRequestDispatcher("/member/MemberList.jsp");
 			rd.include(request, response); //인클루딩
