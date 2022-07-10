@@ -27,6 +27,11 @@
 	<!-- 필터 선언 -->
 	
 	<!-- 필터 URL 매핑 -->
+	
+	<!-- 리스너 선언 -->
+	<listener>
+		<listener-class>spms.listeners.ContextLoaderListener</listener-class>
+	</listener>
 		
 	<!-- 서블릿 선언 -->
 	<servlet>
