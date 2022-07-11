@@ -41,14 +41,17 @@ public class MemberUpdateServlet extends HttpServlet {
 						sc.getInitParameter("username"),
 						sc.getInitParameter("password"));*/
 			//ServletContext에 저장된 DB 커넥션 사용
-			conn = (Connection) sc.getAttribute("conn");
+			//conn = (Connection) sc.getAttribute("conn");
 			//회원 상세 정보 출력
 			/*stmt = conn.createStatement();
 			rs = stmt.executeQuery(
 				"SELECT MNO,EMAIL,MNAME,CRE_DATE FROM MEMBERS" + 
 				" WHERE MNO=" + request.getParameter("no"));*/
-			MemberDao memberDao = new MemberDao();
-		    memberDao.setConnection(conn);
+			/*MemberDao memberDao = new MemberDao();
+		    memberDao.setConnection(conn);*/
+			
+			//ServletContext에 저장된 DAO 객체 사용
+			MemberDao memberDao = (MemberDao)sc.getAttribute("memberDao");
 		       
 		    Member member = memberDao.selectOne(Integer.parseInt(request.getParameter("no")));
 		    request.setAttribute("member", member);
@@ -106,9 +109,13 @@ public class MemberUpdateServlet extends HttpServlet {
 						sc.getInitParameter("username"),
 						sc.getInitParameter("password"));*/
 			//ServletContext에 저장된 DB 커넥션 사용
-			conn = (Connection) sc.getAttribute("conn");
+			/*conn = (Connection) sc.getAttribute("conn");
 			MemberDao memberDao = new MemberDao();
-		    memberDao.setConnection(conn);
+		    memberDao.setConnection(conn);*/
+			
+			//ServletContext에 저장된 DAO 객체 사용
+			MemberDao memberDao = (MemberDao)sc.getAttribute("memberDao");
+			
 		    memberDao.update(new Member().setNo(Integer.parseInt(request.getParameter("no")))
 		    	      					 .setName(request.getParameter("name"))
 		    	      					 .setEmail(request.getParameter("email")));

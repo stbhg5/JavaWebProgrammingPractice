@@ -42,11 +42,15 @@ public class MemberListServlet extends HttpServlet {//extends GenericServlet
 						sc.getInitParameter("url"),
 						sc.getInitParameter("username"),
 						sc.getInitParameter("password"));*/
-			//ServletContext에 저장된 DB 커넥션 사용
-			conn = (Connection)sc.getAttribute("conn");
 			
+			//ServletContext에 저장된 DB 커넥션 사용
+			/*conn = (Connection)sc.getAttribute("conn");
 			MemberDao memberDao = new MemberDao();
-			memberDao.setConnection(conn); //셋터 메서드 호출
+			memberDao.setConnection(conn);*/ //셋터 메서드 호출
+			
+			//ServletContext에 저장된 DAO 객체 사용
+			MemberDao memberDao = (MemberDao)sc.getAttribute("memberDao");
+			
 			/*
 			stmt = conn.createStatement();
 			rs = stmt.executeQuery(

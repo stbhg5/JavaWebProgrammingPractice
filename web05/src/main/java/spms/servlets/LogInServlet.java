@@ -35,7 +35,7 @@ public class LogInServlet extends HttpServlet {
 		ResultSet rs = null;
 		try {
 			ServletContext sc = this.getServletContext();
-			conn = (Connection)sc.getAttribute("conn");  
+			//conn = (Connection)sc.getAttribute("conn");  
 			/*stmt = conn.prepareStatement(
 					"SELECT MNAME,EMAIL FROM MEMBERS"
 					+ " WHERE EMAIL=? AND PWD=?");
@@ -54,8 +54,12 @@ public class LogInServlet extends HttpServlet {
 				RequestDispatcher rd = request.getRequestDispatcher("/auth/LogInFail.jsp");
 				rd.forward(request, response);
 			}*/
-			MemberDao memberDao = new MemberDao();
-		    memberDao.setConnection(conn);
+			/*MemberDao memberDao = new MemberDao();
+		    memberDao.setConnection(conn);*/
+			
+			//ServletContext에 저장된 DAO 객체 사용
+			MemberDao memberDao = (MemberDao)sc.getAttribute("memberDao");
+			
 		    Member member = memberDao.exist(request.getParameter("email"), request.getParameter("password"));
 		    if(member != null) {
 		    	HttpSession session = request.getSession();

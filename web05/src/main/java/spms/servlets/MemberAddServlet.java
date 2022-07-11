@@ -55,10 +55,15 @@ public class MemberAddServlet extends HttpServlet {
 						sc.getInitParameter("url"),
 						sc.getInitParameter("username"),
 						sc.getInitParameter("password"));*/
+			
 			//ServletContext에 저장된 DB 커넥션 사용
-			conn = (Connection) sc.getAttribute("conn");
+			/*conn = (Connection) sc.getAttribute("conn");
 			MemberDao memberDao = new MemberDao();
-		    memberDao.setConnection(conn);
+		    memberDao.setConnection(conn);*/
+			
+			//ServletContext에 저장된 DAO 객체 사용
+			MemberDao memberDao = (MemberDao)sc.getAttribute("memberDao");
+		    
 			/*stmt = conn.prepareStatement(
 					"INSERT INTO MEMBERS(EMAIL,PWD,MNAME,CRE_DATE,MOD_DATE)"
 					+ " VALUES (?,?,?,NOW(),NOW())"); //? : 입력 매개변수(입력 매개변수의 번호는 1부터 시작)
