@@ -82,5 +82,6 @@
   <a href="https://stbhg5.tistory.com/80" >66. ServletContextListener와 객체 공유 (3)</a><br/>
   <a href="https://stbhg5.tistory.com/81" >67. DB 커넥션풀 (1)</a><br/>
   <a href="https://stbhg5.tistory.com/82" >68. DB 커넥션풀 (2)</a><br/>
+  <a href="https://stbhg5.tistory.com/83" >69. DB 커넥션풀 (3)</a><br/>
   <br/><br/>
   
