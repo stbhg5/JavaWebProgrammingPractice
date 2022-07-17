@@ -84,5 +84,6 @@
   <a href="https://stbhg5.tistory.com/82" >68. DB 커넥션풀 (2)</a><br/>
   <a href="https://stbhg5.tistory.com/83" >69. DB 커넥션풀 (3)</a><br/>
   <a href="https://stbhg5.tistory.com/84" >70. DataSource와 JNDI (1)</a><br/>
+  <a href="https://stbhg5.tistory.com/85" >71. DataSource와 JNDI (2)</a><br/>
   <br/><br/>
   
