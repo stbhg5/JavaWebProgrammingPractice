@@ -5,7 +5,6 @@ import java.sql.DriverManager;
 import java.util.ArrayList;
 
 public class DBConnectionPool {
-	
 	String url;
 	String username;
 	String password;
