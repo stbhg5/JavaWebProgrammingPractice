@@ -5,7 +5,7 @@
 		 id="WebApp_ID"
 		 version="3.1">
   <display-name>web05</display-name>
-  
+
   <!-- 웹 애플리케이션에서 톰캣 서버의 자원 사용 -->
   <resource-ref>
   	<res-ref-name>jdbc/studydb</res-ref-name>
