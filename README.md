@@ -86,5 +86,6 @@
   <a href="https://stbhg5.tistory.com/84" >70. DataSource와 JNDI (1)</a><br/>
   <a href="https://stbhg5.tistory.com/85" >71. DataSource와 JNDI (2)</a><br/>
   <a href="https://stbhg5.tistory.com/86" >72. DataSource와 JNDI (3)</a><br/>
+  <a href="https://stbhg5.tistory.com/87" >73. DataSource와 JNDI (4)</a><br/>
   <br/><br/>
   
