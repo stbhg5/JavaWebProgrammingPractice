@@ -89,6 +89,6 @@
   <a href="https://stbhg5.tistory.com/87" >73. DataSource와 JNDI (4)</a><br/>
   <br/><br/>
   
-<h2>제 3장 서블릿 프로그래밍<h2/><br/>
+<h2>제 6장 미니 MVC 프레임워크 만들기<h2/><br/>
   <a href="https://stbhg5.tistory.com/88" >74. 미니 MVC 프레임워크 만들기 도입부 및 환경설정</a><br/>
   <br/><br/>
