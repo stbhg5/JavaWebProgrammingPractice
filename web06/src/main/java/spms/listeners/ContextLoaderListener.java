@@ -24,7 +24,7 @@ public class ContextLoaderListener implements ServletContextListener {
 	//Connection conn; //인스턴스 변수
 	//DBConnectionPool connPool;
 	BasicDataSource ds;
-  
+
 	@Override
 	public void contextInitialized(ServletContextEvent event) {
 		try {
