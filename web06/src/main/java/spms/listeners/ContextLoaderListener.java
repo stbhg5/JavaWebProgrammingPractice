@@ -1,6 +1,6 @@
 package spms.listeners;
 
-import java.sql.SQLException;
+//import java.sql.SQLException;
 
 import javax.naming.InitialContext;
 //import java.sql.Connection;
@@ -16,7 +16,7 @@ import javax.sql.DataSource;
 import org.apache.commons.dbcp2.BasicDataSource;
 
 import spms.dao.MemberDao;
-import spms.util.DBConnectionPool;
+//import spms.util.DBConnectionPool;
 
 //리스너의 배치 : @WebListener 어노테이션 사용
 @WebListener
