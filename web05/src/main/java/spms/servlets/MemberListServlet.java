@@ -99,6 +99,7 @@ public class MemberListServlet extends HttpServlet {//extends GenericServlet
 			rd.include(request, response); //인클루딩
 		} catch (Exception e) {
 			//throw new ServletException(e);
+			e.printStackTrace();
 			request.setAttribute("error", e); //예외 객체를 request에 보관
 			RequestDispatcher rd = request.getRequestDispatcher("/Error.jsp");
 			rd.forward(request, response); //포워딩

@@ -47,6 +47,7 @@ public class DispatcherServlet extends HttpServlet {//서블릿이기 때문에 
 			}else if("/auth/logout.do".equals(servletPath)) {
 				pageControllerPath = "/auth/logout";
 			}
+			//페이지 컨트롤러로 실행 위임
 			RequestDispatcher rd = request.getRequestDispatcher(pageControllerPath);
 			rd.include(request, response);
 
