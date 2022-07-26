@@ -4,12 +4,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>회원 등록</title>
+<title>회원 등록2</title>
 </head>
 <body>
 <jsp:include page="/Header.jsp"/>
-<h1>회원 등록</h1>
-<form action='add' method='post'>
+<h1>회원 등록2</h1>
+<form action='add.do' method='post'>
 	이름: <input type='text' name='name'><br>
 	이메일: <input type='text' name='email'><br>
 	암호: <input type='password' name='password'><br>
