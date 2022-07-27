@@ -95,4 +95,5 @@
   <a href="https://stbhg5.tistory.com/90" >76. 프런트 컨트롤러의 도입 (2)</a><br/>
   <a href="https://stbhg5.tistory.com/91" >77. 프런트 컨트롤러의 도입 (3)</a><br/>
   <a href="https://stbhg5.tistory.com/92" >78. 프런트 컨트롤러의 도입 (4)</a><br/>
+  <a href="https://stbhg5.tistory.com/93" >79. 페이지 컨트롤러의 진화 (1)</a><br/>
   <br/><br/>
