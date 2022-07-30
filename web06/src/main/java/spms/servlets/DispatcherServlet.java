@@ -12,7 +12,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import spms.controls.Controller;
+import spms.controls.LogInController;
+import spms.controls.LogOutController;
+import spms.controls.MemberAddController;
+import spms.controls.MemberDeleteController;
 import spms.controls.MemberListController;
+import spms.controls.MemberUpdateController;
 import spms.vo.Member;
 
 @SuppressWarnings("serial")
@@ -28,7 +33,7 @@ public class DispatcherServlet extends HttpServlet {//서블릿이기 때문에 
 			//페이지 컨트롤러에게 전달할 Map 객체 준비
 			HashMap<String,Object> model = new HashMap<String,Object>();
 			model.put("memberDao", sc.getAttribute("memberDao"));
-			model.put("session", request.getSession());
+			model.put("session", request.getSession()); //로그인 및 로그아웃 페이지 컨트롤러에서 사용할 세션 객체
 			
 			//String pageControllerPath = null;
 			//인터페이스 타입의 참조 변수 선언 - Controller의 구현체 클래스들 객체 주소 저장 위함
@@ -87,7 +92,7 @@ public class DispatcherServlet extends HttpServlet {//서블릿이기 때문에 
 			rd.include(request, response);*/
 			
 			//페이지 컨트롤러 실행
-			String viewUrl = pageController.execute(model);
+			String viewUrl = pageController.execute(model); //뷰 URL 반환받음
 			
 			//Map 객체에 저장된 값을 ServletRequest에 복사
 			for(String key : model.keySet()) {//keySet() : key값 가져옴

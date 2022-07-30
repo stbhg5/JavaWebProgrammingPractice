@@ -126,7 +126,7 @@ public class MemberDao {
 								   .setEmail(rs.getString("EMAIL"))
 								   .setName(rs.getString("MNAME"))
 								   .setCreatedDate(rs.getDate("CRE_DATE"));
-			} else {
+			}else {
 				throw new Exception("해당 번호의 회원을 찾을 수 없습니다.");
 			}
 
@@ -179,8 +179,8 @@ public class MemberDao {
 			rs = stmt.executeQuery();
 			if (rs.next()) {
 				return new Member().setName(rs.getString("MNAME"))
-						.setEmail(rs.getString("EMAIL"));
-			} else {
+								   .setEmail(rs.getString("EMAIL"));
+			}else {
 				return null;
 			}
 		} catch (Exception e) {
