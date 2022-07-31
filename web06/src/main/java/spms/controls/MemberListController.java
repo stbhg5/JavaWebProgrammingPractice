@@ -4,11 +4,19 @@ import java.util.Map;
 
 import spms.dao.MemberDao;
 
+//의존 객체 주입을 위해 인스턴스 변수와 셋터 메서드 추가, 의존 객체를 꺼내는 기존 코드 변경(주석처리)
 public class MemberListController implements Controller {
+	MemberDao memberDao; //인스턴스 변수
+	  
+	public MemberListController setMemberDao(MemberDao memberDao) {//셋터 메서드
+		this.memberDao = memberDao;
+		return this; //셋터 메서드 쉽게 사용하기 위해 자신의 인스턴스 값 반환
+	}
+	
 	@Override
 	public String execute(Map<String, Object> model) throws Exception {
 		//Map 객체에서 MemberDao를 꺼냄
-		MemberDao memberDao = (MemberDao)model.get("memberDao");
+		//MemberDao memberDao = (MemberDao)model.get("memberDao");
 
 		//회원 목록 데이터를 Map 객체에 저장
 		model.put("members", memberDao.selectList());
