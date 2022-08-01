@@ -99,4 +99,5 @@
   <a href="https://stbhg5.tistory.com/94" >80. 페이지 컨트롤러의 진화 (2)</a><br/>
   <a href="https://stbhg5.tistory.com/95" >81. 페이지 컨트롤러의 진화 (3)</a><br/>
   <a href="https://stbhg5.tistory.com/96" >82. DI를 이용한 빈 의존성 관리 (1)</a><br/>
+  <a href="https://stbhg5.tistory.com/97" >83. DI를 이용한 빈 의존성 관리 (2)</a><br/>
   <br/><br/>
