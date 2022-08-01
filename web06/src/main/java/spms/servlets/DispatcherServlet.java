@@ -32,20 +32,24 @@ public class DispatcherServlet extends HttpServlet {//서블릿이기 때문에 
 			
 			//페이지 컨트롤러에게 전달할 Map 객체 준비
 			HashMap<String,Object> model = new HashMap<String,Object>();
-			model.put("memberDao", sc.getAttribute("memberDao"));
+			//model.put("memberDao", sc.getAttribute("memberDao")); //memberDao 객체는 더이상 Map 객체에 담을 필요 없음.
 			model.put("session", request.getSession()); //로그인 및 로그아웃 페이지 컨트롤러에서 사용할 세션 객체
 			
 			//String pageControllerPath = null;
 			//인터페이스 타입의 참조 변수 선언 - Controller의 구현체 클래스들 객체 주소 저장 위함
-			Controller pageController = null;
+			//Controller pageController = null;
+			//ServletContext에서 페이지 컨트롤러 꺼낼 때 서블릿 URL 사용
+			Controller pageController = (Controller)sc.getAttribute(servletPath);
 			
 			//페이지 컨트롤러로 위임
-			if("/member/list.do".equals(servletPath)) {
+			//조건문 변경 : 페이지 컨트롤러가 사용할 데이터를 준비하는 부분 외 제거
+			/*if("/member/list.do".equals(servletPath)) {
 				//pageControllerPath = "/member/list";
-				pageController = new MemberListController();
-			}else if("/member/add.do".equals(servletPath)) {
+				//pageController = new MemberListController();
+			}else*/
+			if("/member/add.do".equals(servletPath)) {
 				//pageControllerPath = "/member/add";
-				pageController = new MemberAddController();
+				//pageController = new MemberAddController();
 				if(request.getParameter("email") != null) {
 					//요청 매개변수로부터 VO 객체 준비
 					/*request.setAttribute("member", new Member().setEmail(request.getParameter("email"))
@@ -58,7 +62,7 @@ public class DispatcherServlet extends HttpServlet {//서블릿이기 때문에 
 				}
 			}else if("/member/update.do".equals(servletPath)) {
 				//pageControllerPath = "/member/update";
-				pageController = new MemberUpdateController();
+				//pageController = new MemberUpdateController();
 				if(request.getParameter("email") != null) {
 					//요청 매개변수로부터 VO 객체 준비
 					/*request.setAttribute("member", new Member().setNo(Integer.parseInt(request.getParameter("no")))
@@ -73,19 +77,19 @@ public class DispatcherServlet extends HttpServlet {//서블릿이기 때문에 
 		        }
 			}else if("/member/delete.do".equals(servletPath)) {
 				//pageControllerPath = "/member/delete";
-				pageController = new MemberDeleteController();
+				//pageController = new MemberDeleteController();
 				model.put("no", new Integer(request.getParameter("no")));
 			}else if("/auth/login.do".equals(servletPath)) {
 				//pageControllerPath = "/auth/login";
-				pageController = new LogInController();
+				//pageController = new LogInController();
 				if(request.getParameter("email") != null) {
 					model.put("loginInfo", new Member().setEmail(request.getParameter("email"))
 													   .setPassword(request.getParameter("password")));
 				}
-			}else if("/auth/logout.do".equals(servletPath)) {
+			}/*else if("/auth/logout.do".equals(servletPath)) {
 				//pageControllerPath = "/auth/logout";
-				pageController = new LogOutController();
-			}
+				//pageController = new LogOutController();
+			}*/
 			
 			//페이지 컨트롤러로 실행 위임
 			/*RequestDispatcher rd = request.getRequestDispatcher(pageControllerPath);
