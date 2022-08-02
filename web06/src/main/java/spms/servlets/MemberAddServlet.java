@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import spms.dao.MemberDao;
+import spms.dao.MySqlMemberDao;
 import spms.vo.Member;
 
 //프런트 컨트롤러 적용
@@ -38,7 +38,7 @@ public class MemberAddServlet extends HttpServlet {
 		try {
 			ServletContext sc = this.getServletContext();
 			//ServletContext에 저장된 DAO 객체 사용
-			MemberDao memberDao = (MemberDao)sc.getAttribute("memberDao");
+			MySqlMemberDao memberDao = (MySqlMemberDao)sc.getAttribute("memberDao");
 			
 		    /*memberDao.insert(new Member()
 		             .setEmail(request.getParameter("email"))

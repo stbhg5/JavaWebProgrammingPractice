@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import spms.dao.MemberDao;
+import spms.dao.MySqlMemberDao;
 
 //프런트 컨트롤러 적용
 @WebServlet("/member/list")
@@ -22,7 +22,7 @@ public class MemberListServlet extends HttpServlet {
 			ServletContext sc = this.getServletContext();
 			
 			//ServletContext에 저장된 DAO 객체 사용
-			MemberDao memberDao = (MemberDao)sc.getAttribute("memberDao");
+			MySqlMemberDao memberDao = (MySqlMemberDao)sc.getAttribute("memberDao");
 			
 			//DAO의 selectList() 메서드 반환값을 request에 담기
 			request.setAttribute("members", memberDao.selectList());

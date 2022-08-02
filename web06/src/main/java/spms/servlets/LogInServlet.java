@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import spms.dao.MemberDao;
+import spms.dao.MySqlMemberDao;
 import spms.vo.Member;
 
 //프런트 컨트롤러 적용
@@ -36,7 +36,7 @@ public class LogInServlet extends HttpServlet {
 		try {
 			ServletContext sc = this.getServletContext();
 			//ServletContext에 저장된 DAO 객체 사용
-			MemberDao memberDao = (MemberDao)sc.getAttribute("memberDao");
+			MySqlMemberDao memberDao = (MySqlMemberDao)sc.getAttribute("memberDao");
 			
 		    Member member = memberDao.exist(request.getParameter("email"), request.getParameter("password"));
 		    if(member != null) {

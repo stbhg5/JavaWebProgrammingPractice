@@ -17,7 +17,7 @@ import spms.controls.MemberAddController;
 import spms.controls.MemberDeleteController;
 import spms.controls.MemberListController;
 import spms.controls.MemberUpdateController;
-import spms.dao.MemberDao;
+import spms.dao.MySqlMemberDao;
 
 //리스너의 배치 : @WebListener 어노테이션 사용
 @WebListener
@@ -37,7 +37,8 @@ public class ContextLoaderListener implements ServletContextListener {
 			DataSource ds = (DataSource)initialContext.lookup("java:comp/env/jdbc/studydb");
 			
 			//MemberDao 객체 준비하여 ServletContext에 보관
-			MemberDao memberDao = new MemberDao();
+			//MemberDao memberDao = new MemberDao();
+			MySqlMemberDao memberDao = new MySqlMemberDao();
 			
 			memberDao.setDataSource(ds); //DAO에 DataSource 객체 주입
 			//sc.setAttribute("memberDao", memberDao); //memberDao 객체를 별도로 꺼내서 사용할 일 없기 때문에 ServletContext에 저장하지 않는다.

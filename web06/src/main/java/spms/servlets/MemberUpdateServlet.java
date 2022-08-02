@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import spms.dao.MemberDao;
+import spms.dao.MySqlMemberDao;
 import spms.vo.Member;
 
 //프런트 컨트롤러 적용
@@ -31,7 +31,7 @@ public class MemberUpdateServlet extends HttpServlet {
 			//HttpServlet 클래스로부터 상속받은 getServletContext()를 호출하여 ServletContext 객체 준비
 			ServletContext sc = this.getServletContext();
 			//ServletContext에 저장된 DAO 객체 사용
-			MemberDao memberDao = (MemberDao)sc.getAttribute("memberDao");
+			MySqlMemberDao memberDao = (MySqlMemberDao)sc.getAttribute("memberDao");
 		       
 		    Member member = memberDao.selectOne(Integer.parseInt(request.getParameter("no")));
 		    request.setAttribute("member", member);
@@ -55,7 +55,7 @@ public class MemberUpdateServlet extends HttpServlet {
 		try {
 			ServletContext sc = this.getServletContext();
 			//ServletContext에 저장된 DAO 객체 사용
-			MemberDao memberDao = (MemberDao)sc.getAttribute("memberDao");
+			MySqlMemberDao memberDao = (MySqlMemberDao)sc.getAttribute("memberDao");
 			
 		    /*memberDao.update(new Member().setNo(Integer.parseInt(request.getParameter("no")))
 		    	      					 .setName(request.getParameter("name"))
