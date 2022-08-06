@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import spms.bind.DataBinding;
+import spms.bind.ServletRequestDataBinder;
 import spms.controls.Controller;
 import spms.controls.LogInController;
 import spms.controls.LogOutController;
@@ -41,20 +43,25 @@ public class DispatcherServlet extends HttpServlet {//서블릿이기 때문에 
 			//ServletContext에서 페이지 컨트롤러 꺼낼 때 서블릿 URL 사용
 			Controller pageController = (Controller)sc.getAttribute(servletPath);
 			
+			//DataBinding 구현 여부 검사하여, 해당 인터페이스를 구현한 경우에만 호출
+			if(pageController instanceof DataBinding) {
+				prepareRequestData(request, model, (DataBinding)pageController);
+			}
+			
 			//페이지 컨트롤러로 위임
 			//조건문 변경 : 페이지 컨트롤러가 사용할 데이터를 준비하는 부분 외 제거
 			/*if("/member/list.do".equals(servletPath)) {
 				//pageControllerPath = "/member/list";
 				//pageController = new MemberListController();
-			}else*/
+			}else
 			if("/member/add.do".equals(servletPath)) {
 				//pageControllerPath = "/member/add";
 				//pageController = new MemberAddController();
 				if(request.getParameter("email") != null) {
 					//요청 매개변수로부터 VO 객체 준비
-					/*request.setAttribute("member", new Member().setEmail(request.getParameter("email"))
-															   .setPassword(request.getParameter("password"))
-															   .setName(request.getParameter("name")));*/
+					//request.setAttribute("member", new Member().setEmail(request.getParameter("email"))
+															   //.setPassword(request.getParameter("password"))
+															   //.setName(request.getParameter("name")));
 					//Map 객체에 VO 객체 준비
 					model.put("member", new Member().setEmail(request.getParameter("email"))
 													.setPassword(request.getParameter("password"))
@@ -65,9 +72,9 @@ public class DispatcherServlet extends HttpServlet {//서블릿이기 때문에 
 				//pageController = new MemberUpdateController();
 				if(request.getParameter("email") != null) {
 					//요청 매개변수로부터 VO 객체 준비
-					/*request.setAttribute("member", new Member().setNo(Integer.parseInt(request.getParameter("no")))
-															   .setEmail(request.getParameter("email"))
-															   .setName(request.getParameter("name")));*/
+					//request.setAttribute("member", new Member().setNo(Integer.parseInt(request.getParameter("no")))
+															   //.setEmail(request.getParameter("email"))
+															   //.setName(request.getParameter("name")));
 					//Map 객체에 VO 객체 준비
 					model.put("member", new Member().setNo(Integer.parseInt(request.getParameter("no")))
 													.setEmail(request.getParameter("email"))
@@ -86,7 +93,8 @@ public class DispatcherServlet extends HttpServlet {//서블릿이기 때문에 
 					model.put("loginInfo", new Member().setEmail(request.getParameter("email"))
 													   .setPassword(request.getParameter("password")));
 				}
-			}/*else if("/auth/logout.do".equals(servletPath)) {
+			}
+			else if("/auth/logout.do".equals(servletPath)) {
 				//pageControllerPath = "/auth/logout";
 				//pageController = new LogOutController();
 			}*/
@@ -125,6 +133,23 @@ public class DispatcherServlet extends HttpServlet {//서블릿이기 때문에 
 			request.setAttribute("error", e);
 			RequestDispatcher rd = request.getRequestDispatcher("/Error.jsp");
 			rd.forward(request, response);
+		}
+	}
+	
+	//페이지 컨트롤러에 필요한 데이터 준비
+	private void prepareRequestData(HttpServletRequest request, HashMap<String, Object> model, DataBinding dataBinding) throws Exception {
+		//페이지 컨트롤러에게 필요한 데이터 묻기
+		Object[] dataBinders = dataBinding.getDataBinders();
+		//배열에서 꺼낸 값 보관할 임시 변수
+		String dataName = null; //데이터 이름(String)
+		Class<?> dataType = null; //데이터 타입(Class)
+		Object dataObj = null; //데이터 객체(Object)
+		//배열 반복하며 값 꺼내기
+		for(int i=0 ; i < dataBinders.length ; i+=2) {
+			dataName = (String)dataBinders[i];
+			dataType = (Class<?>)dataBinders[i+1];
+			dataObj = ServletRequestDataBinder.bind(request, dataType, dataName);
+			model.put(dataName, dataObj);
 		}
 	}
 }
