@@ -11,6 +11,7 @@ public class ServletRequestDataBinder {
 	//요청 매개변수의 값, 데이터 이름, 데이터 타입을 받아 데이터 객체를 만드는 일
 	public static Object bind(ServletRequest request, Class<?> dataType, String dataName) throws Exception {
 		if(isPrimitiveType(dataType)) {
+			//기본 타입의 경우 셋터 메서드가 없기 때문에 객체를 생성하는 메서드
 			return createValueObject(dataType, request.getParameter(dataName));
 		}
 
@@ -22,7 +23,7 @@ public class ServletRequestDataBinder {
 			m = findSetter(dataType, paramName);
 			if(m != null) {
 				//dataObject에 대해 m메서드 호출 - createValueObject()로 객체생성한 매개변수 가지고 셋터 메서드 실행
-				//createValueObject(셋터 메서드의 매개변수 타입, 요청 매개변수 타입)
+				//createValueObject(셋터 메서드의 매개변수 타입(매개변수 목록 배열로 반환), 요청 매개변수 타입)
 				m.invoke(dataObject, createValueObject(m.getParameterTypes()[0], request.getParameter(paramName)));
 			}
 		}

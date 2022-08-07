@@ -28,6 +28,7 @@ public class DispatcherServlet extends HttpServlet {//서블릿이기 때문에 
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html; charset=UTF-8");
+		request.setCharacterEncoding("UTF-8");
 		String servletPath = request.getServletPath(); //서블릿 경로 추출
 		try {
 			ServletContext sc = this.getServletContext();
