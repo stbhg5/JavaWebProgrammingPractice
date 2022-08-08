@@ -22,7 +22,7 @@ import spms.dao.MySqlMemberDao;
 //리스너의 배치 : @WebListener 어노테이션 사용
 @WebListener
 public class ContextLoaderListener implements ServletContextListener {
-	BasicDataSource ds;
+	//BasicDataSource ds;
 
 	@Override
 	public void contextInitialized(ServletContextEvent event) {
