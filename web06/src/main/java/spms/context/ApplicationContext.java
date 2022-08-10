@@ -10,20 +10,27 @@ import javax.naming.InitialContext;
 
 //프로퍼티 파일을 이용한 객체 준비
 public class ApplicationContext {
+	//객체 저장할 보관소
 	Hashtable<String,Object> objTable = new Hashtable<String,Object>();
-  
+
+	//객체 꺼낼 메서드(getter)
 	public Object getBean(String key) {
 		return objTable.get(key);
 	}
-  
+
+	//ApplicationContext 클래스의 생성자
 	public ApplicationContext(String propertiesPath) throws Exception {
+		//'이름=값'형태로 된 파일 다루는 Properties 클래스
 		Properties props = new Properties();
+		//load() : FileReader를 통해 읽어드린 프로퍼티 내용 키-값 형태로 내부 맵에 보관
 		props.load(new FileReader(propertiesPath));
 		prepareObjects(props);
 		injectDependency();
 	}
-  
+
+	//프로퍼티 파일의 내용 로딩 후 객체 준비 메서드
 	private void prepareObjects(Properties props) throws Exception {
+		//JNDI 객체 찾을 때 사용할 InitialContext 준비
 		Context ctx = new InitialContext();
 		String key = null;
 		String value = null;
@@ -31,14 +38,17 @@ public class ApplicationContext {
 		for(Object item : props.keySet()) {
 			key = (String)item;
 			value = props.getProperty(key);
-			if(key.startsWith("jndi.")) {
+			if(key.startsWith("jndi.")) {//keySet() : key목록 가져옴
+				//lookup() : JNDI 인터페이스 통해 톰캣 서버에 등록된 객체 찾음
 				objTable.put(key, ctx.lookup(value));
 			}else {
+				//Class.forName() 호출하여 클래스 로딩하고, newInstance() 사용하여 인스턴스 생성
 				objTable.put(key, Class.forName(value).newInstance());
 			}
 		}
 	}
-  
+
+	//각 객체가 필요로 하는 의존 객체 주입 메서드
 	private void injectDependency() throws Exception {
 		for(String key : objTable.keySet()) {
 			if(!key.startsWith("jndi.")) {
@@ -47,21 +57,25 @@ public class ApplicationContext {
 		}
 	}
 
+	//매개변수로 주어진 객체에 대해 셋터 메서드 찾아서 호출
 	private void callSetter(Object obj) throws Exception {
 		Object dependency = null;
 		for(Method m : obj.getClass().getMethods()) {
 			if(m.getName().startsWith("set")) {
 				dependency = findObjectByType(m.getParameterTypes()[0]);
+				//의존 객체 찾았다면 셋터 메서드 호출
 				if(dependency != null) {
 					m.invoke(obj, dependency);
 				}
 			}
 		}
 	}
-  
+
+	//셋터 메서드의 매개변수 타입이 일치하는 객체를 objTable에서 찾음 - 셋터 메서드 호출할 때 넘겨줄 의존 객체 찾음
 	private Object findObjectByType(Class<?> type) {
 		for(Object obj : objTable.values()) {
-			if(type.isInstance(obj)) {
+			//타입이 일치하면 객체의 주소 리턴
+			if(type.isInstance(obj)) {//isInstance() : 주어진 객체가 해당 클래스 또는 인터페이스의 인스턴스인지 검사
 				return obj;
 			}
 		}
