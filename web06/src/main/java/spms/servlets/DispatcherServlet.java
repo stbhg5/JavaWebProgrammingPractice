@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import spms.bind.DataBinding;
 import spms.bind.ServletRequestDataBinder;
+import spms.context.ApplicationContext;
 import spms.controls.Controller;
 import spms.controls.LogInController;
 import spms.controls.LogOutController;
@@ -20,6 +21,7 @@ import spms.controls.MemberAddController;
 import spms.controls.MemberDeleteController;
 import spms.controls.MemberListController;
 import spms.controls.MemberUpdateController;
+import spms.listeners.ContextLoaderListener;
 import spms.vo.Member;
 
 @SuppressWarnings("serial")
@@ -31,7 +33,10 @@ public class DispatcherServlet extends HttpServlet {//서블릿이기 때문에 
 		request.setCharacterEncoding("UTF-8");
 		String servletPath = request.getServletPath(); //서블릿 경로 추출
 		try {
-			ServletContext sc = this.getServletContext();
+			//ServletContext 객체 준비
+			//ServletContext sc = this.getServletContext();
+			//ApplicationContext 객체 준비
+			ApplicationContext ctx = ContextLoaderListener.getApplicationContext();
 			
 			//페이지 컨트롤러에게 전달할 Map 객체 준비
 			HashMap<String,Object> model = new HashMap<String,Object>();
@@ -41,8 +46,14 @@ public class DispatcherServlet extends HttpServlet {//서블릿이기 때문에 
 			//String pageControllerPath = null;
 			//인터페이스 타입의 참조 변수 선언 - Controller의 구현체 클래스들 객체 주소 저장 위함
 			//Controller pageController = null;
-			//ServletContext에서 페이지 컨트롤러 꺼낼 때 서블릿 URL 사용
-			Controller pageController = (Controller)sc.getAttribute(servletPath);
+			//ServletContext 객체에서 페이지 컨트롤러 꺼낼 때 서블릿 URL 사용
+			//Controller pageController = (Controller)sc.getAttribute(servletPath);
+			//ApplicationContext 객체에서 페이지 컨트롤러 꺼낼 때 서블릿 URL 사용
+			Controller pageController = (Controller)ctx.getBean(servletPath);
+			//찾지 못한다면 오류 발생시킴
+			if(pageController == null) {
+				throw new Exception("요청한 서비스를 찾을 수 없습니다.");
+			}
 			
 			//DataBinding 구현 여부 검사하여, 해당 인터페이스를 구현한 경우에만 호출
 			if(pageController instanceof DataBinding) {
