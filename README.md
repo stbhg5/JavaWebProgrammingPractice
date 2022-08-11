@@ -107,4 +107,5 @@
   <a href="https://stbhg5.tistory.com/102" >88. 리플랙션 API를 이용하여 프런트 컨트롤러 개선하기 (4)</a><br/>
   <a href="https://stbhg5.tistory.com/103" >89. 프로퍼티를 이용한 객체 관리 (1)</a><br/>
   <a href="https://stbhg5.tistory.com/104" >90. 프로퍼티를 이용한 객체 관리 (2)</a><br/>
+  <a href="https://stbhg5.tistory.com/105" >91. 프로퍼티를 이용한 객체 관리 (3)</a><br/>
   <br/><br/>
