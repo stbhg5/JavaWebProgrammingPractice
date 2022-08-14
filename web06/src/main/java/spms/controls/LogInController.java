@@ -4,11 +4,13 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import spms.annotation.Component;
 import spms.bind.DataBinding;
 import spms.dao.MySqlMemberDao;
 import spms.vo.Member;
 
 //의존 객체 주입을 위해 인스턴스 변수와 셋터 메서드 추가, 의존 객체를 꺼내는 기존 코드 변경(주석처리)
+@Component("/auth/login.do") //Annotation 적용
 public class LogInController implements Controller, DataBinding {//Map 객체에 저장할 파라미터에 대한 정보 제공 - DataBinding 인터페이스 구현
 	MySqlMemberDao memberDao; //인스턴스 변수
 	
