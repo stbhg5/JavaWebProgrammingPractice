@@ -109,4 +109,5 @@
   <a href="https://stbhg5.tistory.com/104" >90. 프로퍼티를 이용한 객체 관리 (2)</a><br/>
   <a href="https://stbhg5.tistory.com/105" >91. 프로퍼티를 이용한 객체 관리 (3)</a><br/>
   <a href="https://stbhg5.tistory.com/106" >92. 어노테이션을 이용한 객체 관리 (1)</a><br/>
+  <a href="https://stbhg5.tistory.com/107" >93. 어노테이션을 이용한 객체 관리 (2)</a><br/>
   <br/><br/>
