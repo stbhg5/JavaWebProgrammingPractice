@@ -4,9 +4,14 @@ import java.io.FileReader;
 import java.lang.reflect.Method;
 import java.util.Hashtable;
 import java.util.Properties;
+import java.util.Set;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
+
+import org.reflections.Reflections;
+
+import spms.annotation.Component;
 
 //프로퍼티 파일을 이용한 객체 준비
 public class ApplicationContext {
@@ -25,6 +30,7 @@ public class ApplicationContext {
 		//load() : FileReader를 통해 읽어드린 프로퍼티 내용 키-값 형태로 내부 맵에 보관
 		props.load(new FileReader(propertiesPath));
 		prepareObjects(props);
+		prepareAnnotationObjects();
 		injectDependency();
 	}
 
@@ -45,6 +51,21 @@ public class ApplicationContext {
 				//Class.forName() 호출하여 클래스 로딩하고, newInstance() 사용하여 인스턴스 생성
 				objTable.put(key, Class.forName(value).newInstance());
 			}
+		}
+	}
+	
+	//어노테이션이 붙은 클래스를 찾아 객체 준비 메서드
+	private void prepareAnnotationObjects() throws Exception {
+		//Reflections 클래스 : 원하는 클래스를 찾아주는 도구
+		Reflections reflector = new Reflections("");
+		//@Component 어노테이션 선언된 클래스 찾아 클래스 목록 반환
+		Set<Class<?>> list = reflector.getTypesAnnotatedWith(Component.class);
+		String key = null;
+		for(Class<?> clazz : list) {
+			//어노테이션에 정의된 메서드 호출하여 속성값 꺼냄
+			key = clazz.getAnnotation(Component.class).value();
+			//어노테이션을 통해 알아낸 객체 이름(key)으로 인스턴스 저장
+			objTable.put(key, clazz.newInstance());
 		}
 	}
 
