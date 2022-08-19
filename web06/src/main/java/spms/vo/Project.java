@@ -3,6 +3,7 @@ package spms.vo;
 import java.util.Date;
 
 public class Project {
+	
 	protected int     no; //프로젝트일련번호
 	protected String  title; //프로젝트명
 	protected String  content; //설명
