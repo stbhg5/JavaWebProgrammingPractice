@@ -47,7 +47,7 @@ public class ApplicationContext {
 			if(key.startsWith("jndi.")) {//keySet() : key목록 가져옴
 				//lookup() : JNDI 인터페이스 통해 톰캣 서버에 등록된 객체 찾음
 				objTable.put(key, ctx.lookup(value));
-			}else {
+			}else {//사용안함
 				//Class.forName() 호출하여 클래스 로딩하고, newInstance() 사용하여 인스턴스 생성
 				objTable.put(key, Class.forName(value).newInstance());
 			}
