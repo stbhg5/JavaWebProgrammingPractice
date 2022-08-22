@@ -121,7 +121,7 @@ public class MySqlProjectDao implements ProjectDao {
 		try {
 			connection = ds.getConnection(); //커넥션 객체 가져오기
 			stmt = connection.prepareStatement(
-				"UPDATE PROJECTS SET PNAME=?, CONTENT=?, STA_DATE=?, END_DATE=?, STATE=? TAGS=? "
+				"UPDATE PROJECTS SET PNAME=?, CONTENT=?, STA_DATE=?, END_DATE=?, STATE=?, TAGS=? "
 			  + "WHERE PNO=?");
 			stmt.setString(1, project.getTitle());
 			stmt.setString(2, project.getContent());
