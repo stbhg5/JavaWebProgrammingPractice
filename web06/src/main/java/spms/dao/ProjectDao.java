@@ -8,4 +8,6 @@ import spms.vo.Project;
 public interface ProjectDao {
 	List<Project> selectList() throws Exception; //프로젝트 목록 반환 메서드
 	int insert(Project project) throws Exception; //프로젝트 데이터 등록 메서드
+	Project selectOne(int no) throws Exception; //프로젝트 상세정보 조회 메서드
+	int update(Project project) throws Exception; //프로젝트 데이터 변경 메서드
 }

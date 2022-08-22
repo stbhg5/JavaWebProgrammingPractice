@@ -122,7 +122,7 @@ public class MySqlMemberDao implements MemberDao {//MemberDao 인터페이스 �
 			stmt = connection.createStatement();
 			rs = stmt.executeQuery(
 					"SELECT MNO,EMAIL,MNAME,CRE_DATE FROM MEMBERS" + 
-					" WHERE MNO=" + no);    
+					" WHERE MNO=" + no);
 			if(rs.next()) {
 				return new Member().setNo(rs.getInt("MNO"))
 								   .setEmail(rs.getString("EMAIL"))

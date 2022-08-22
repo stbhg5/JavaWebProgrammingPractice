@@ -78,5 +78,65 @@ public class MySqlProjectDao implements ProjectDao {
 			try {if(connection != null) connection.close();} catch(Exception e) {}
 		}
 	}
+
+	//프로젝트 상세정보 조회
+	@Override
+	public Project selectOne(int no) throws Exception {
+		Connection connection = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		try {
+			connection = ds.getConnection(); //커넥션 객체 가져오기
+			stmt = connection.createStatement();
+			rs = stmt.executeQuery(
+				"SELECT PNO, PNAME, CONTENT, STA_DATE, END_DATE, STATE, CRE_DATE, TAGS "
+			  + "FROM PROJECTS "
+			  + "WHERE PNO=" + no);
+			if(rs.next()) {
+				return new Project().setNo(rs.getInt("PNO"))
+									.setTitle(rs.getString("PNAME"))
+									.setContent(rs.getString("CONTENT"))
+									.setStartDate(rs.getDate("STA_DATE"))
+									.setEndDate(rs.getDate("END_DATE"))
+									.setState(rs.getInt("STATE"))
+									.setCreatedDate(rs.getDate("CRE_DATE"))
+									.setTags(rs.getString("TAGS"));
+			}else {
+				throw new Exception("해당 번호의 프로젝트를 찾을 수 없습니다.");
+			}
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			try {if (rs != null) rs.close();} catch(Exception e) {}
+			try {if (stmt != null) stmt.close();} catch(Exception e) {}
+			try {if(connection != null) connection.close();} catch(Exception e) {}
+		}
+	}
+
+	//프로젝트 수정
+	@Override
+	public int update(Project project) throws Exception {
+		Connection connection = null;
+		PreparedStatement stmt = null;
+		try {
+			connection = ds.getConnection(); //커넥션 객체 가져오기
+			stmt = connection.prepareStatement(
+				"UPDATE PROJECTS SET PNAME=?, CONTENT=?, STA_DATE=?, END_DATE=?, STATE=? TAGS=? "
+			  + "WHERE PNO=?");
+			stmt.setString(1, project.getTitle());
+			stmt.setString(2, project.getContent());
+			stmt.setDate(3, new java.sql.Date(project.getStartDate().getTime()));
+			stmt.setDate(4, new java.sql.Date(project.getEndDate().getTime()));
+			stmt.setInt(5, project.getState());
+			stmt.setString(6, project.getTags());
+			stmt.setInt(7, project.getNo());
+			return stmt.executeUpdate();
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			try {if (stmt != null) stmt.close();} catch(Exception e) {}
+			try {if(connection != null) connection.close();} catch(Exception e) {}
+		}
+	}
 	
 }
