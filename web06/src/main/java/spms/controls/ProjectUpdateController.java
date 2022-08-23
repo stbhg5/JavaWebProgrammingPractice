@@ -19,7 +19,7 @@ public class ProjectUpdateController implements Controller, DataBinding {
 		return this;
 	}
 	
-	//DataBinding 인터페이스의 구현 메서드
+	//DataBinding 인터페이스 구현 메서드
 	@Override
 	public Object[] getDataBinders() {
 		return new Object[] {"no", Integer.class, "project", spms.vo.Project.class};

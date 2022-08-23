@@ -107,8 +107,8 @@ public class MySqlProjectDao implements ProjectDao {
 		} catch (Exception e) {
 			throw e;
 		} finally {
-			try {if (rs != null) rs.close();} catch(Exception e) {}
-			try {if (stmt != null) stmt.close();} catch(Exception e) {}
+			try {if(rs != null) rs.close();} catch(Exception e) {}
+			try {if(stmt != null) stmt.close();} catch(Exception e) {}
 			try {if(connection != null) connection.close();} catch(Exception e) {}
 		}
 	}
@@ -134,7 +134,25 @@ public class MySqlProjectDao implements ProjectDao {
 		} catch (Exception e) {
 			throw e;
 		} finally {
-			try {if (stmt != null) stmt.close();} catch(Exception e) {}
+			try {if(stmt != null) stmt.close();} catch(Exception e) {}
+			try {if(connection != null) connection.close();} catch(Exception e) {}
+		}
+	}
+
+	//프로젝트 삭제
+	@Override
+	public int delete(int no) throws Exception {
+		Connection connection = null;
+		Statement stmt = null;
+		try {
+			connection = ds.getConnection(); //커넥션 객체 가져오기
+			stmt = connection.createStatement();
+			return stmt.executeUpdate(
+				"DELETE FROM PROJECTS WHERE PNO=" + no);
+		} catch (Exception e) {
+			throw e;
+		} finally {
+			try {if(stmt != null) stmt.close();} catch(Exception e) {}
 			try {if(connection != null) connection.close();} catch(Exception e) {}
 		}
 	}

@@ -20,7 +20,7 @@ public class ProjectAddController implements Controller, DataBinding {
 		return this;
 	}
 
-	//DataBinding 인터페이스의 구현 메서드
+	//DataBinding 인터페이스 구현 메서드
 	@Override
 	public Object[] getDataBinders() {
 		//클라이언트가 보낸 매개변수를 Project 인스턴스에 담아 "project"라는 이름으로 Map객체에 저장해라
