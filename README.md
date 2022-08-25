@@ -118,3 +118,7 @@
   <a href="https://stbhg5.tistory.com/113" >99. 실력 향상 훈련 (5)</a><br/>
   <a href="https://stbhg5.tistory.com/114" >100. 실력 향상 훈련 (6)</a><br/>
   <br/><br/>
+
+<h2>제 7장 퍼시스턴스 프레임워크의 도입<h2/><br/>
+  <a href="https://stbhg5.tistory.com/115" >101. 퍼시스턴스 프레임워크의 도입 도입부 및 환경설정</a><br/>
+  <br/><br/>
