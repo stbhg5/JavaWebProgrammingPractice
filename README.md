@@ -121,4 +121,5 @@
 
 <h2>제 7장 퍼시스턴스 프레임워크의 도입<h2/><br/>
   <a href="https://stbhg5.tistory.com/115" >101. 퍼시스턴스 프레임워크의 도입 도입부 및 환경설정</a><br/>
+  <a href="https://stbhg5.tistory.com/116" >102. mybatis 소개</a><br/>
   <br/><br/>
