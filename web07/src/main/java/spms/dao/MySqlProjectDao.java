@@ -9,12 +9,103 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
 import spms.annotation.Component;
 import spms.vo.Project;
 
+//mybatis적용
 @Component("projectDao")
 public class MySqlProjectDao implements ProjectDao {
 	
+	//SqlSessionFactory 인터페이스
+	SqlSessionFactory sqlSessionFactory;
+	
+	/**
+	 * SqlSessionFactory 인터페이스 객체 주입
+	 * @param sqlSessionFactory
+	 */
+	public void setSqlSessionFactory(SqlSessionFactory sqlSessionFactory) {
+		this.sqlSessionFactory = sqlSessionFactory;
+	}
+	
+	/**
+	 * 프로젝트 목록 조회
+	 * @return sqlSession.selectList("spms.dao.ProjectDao.selectList")
+	 */
+	public List<Project> selectList() throws Exception {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		try {
+			return sqlSession.selectList("spms.dao.ProjectDao.selectList");
+		} finally {
+			sqlSession.close();
+		}
+	}
+
+	/**
+	 * 프로젝트 등록
+	 * @param project
+	 * @return count
+	 */
+	public int insert(Project project) throws Exception  {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		try {
+			int count = sqlSession.insert("spms.dao.ProjectDao.insert", project);
+			sqlSession.commit();
+			return count;
+		} finally {
+			sqlSession.close();
+		}
+	}
+	
+	/**
+	 * 프로젝트 상세정보 조회
+	 * @param no
+	 * @return sqlSession.selectOne("spms.dao.ProjectDao.selectOne", no)
+	 */
+	public Project selectOne(int no) throws Exception { 
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		try {
+			return sqlSession.selectOne("spms.dao.ProjectDao.selectOne", no);
+		} finally {
+			sqlSession.close();
+		}
+	}
+
+	/**
+	 * 프로젝트 수정
+	 * @param project
+	 * @return count
+	 */
+	public int update(Project project) throws Exception { 
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		try {
+			int count = sqlSession.update("spms.dao.ProjectDao.update", project);
+			sqlSession.commit();
+			return count;
+		} finally {
+			sqlSession.close();
+		}
+	}  
+
+	/**
+	 * 프로젝트 삭제
+	 * @param no
+	 * @return count
+	 */
+	public int delete(int no) throws Exception {  
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		try {
+			int count = sqlSession.delete("spms.dao.ProjectDao.delete", no);
+			sqlSession.commit();
+			return count;
+		} finally {
+			sqlSession.close();
+		}
+	}
+	
+	/*
 	//DataSource 인터페이스
 	DataSource ds;
 	
@@ -156,5 +247,5 @@ public class MySqlProjectDao implements ProjectDao {
 			try {if(connection != null) connection.close();} catch(Exception e) {}
 		}
 	}
-	
+	*/
 }
