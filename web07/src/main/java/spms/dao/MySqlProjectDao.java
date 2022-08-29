@@ -35,10 +35,13 @@ public class MySqlProjectDao implements ProjectDao {
 	 * @return sqlSession.selectList("spms.dao.ProjectDao.selectList")
 	 */
 	public List<Project> selectList() throws Exception {
+		//SqlSession : SQL 실행하는 도구, sqlSessionFactory 객체 통해서만 얻을 수 있다
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		try {
+			//selectList() : 여러 개의 결과 반환하는 SELECT문 실행시 호출
 			return sqlSession.selectList("spms.dao.ProjectDao.selectList");
 		} finally {
+			//close() : SQL문 실행할 때 사용한 자원 해제
 			sqlSession.close();
 		}
 	}
@@ -50,9 +53,15 @@ public class MySqlProjectDao implements ProjectDao {
 	 */
 	public int insert(Project project) throws Exception  {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
+		//자동 커밋(Auto-commit)을 수행하는 sqlSession 객체 반환
+		//SqlSession sqlSession = sqlSessionFactory.openSession(true);
 		try {
+			//insert() : 두 번째 매개변수로 프로젝트 정보 담은 값 객체 전달
 			int count = sqlSession.insert("spms.dao.ProjectDao.insert", project);
+			//임시 데이터베이스에 보관된 작업 결과를 운영 데이터베이스에 적용
 			sqlSession.commit();
+			//임시 데이터베이스에 보관된 작업 결과를 운영 데이터베이스에 적용하지 않고 취소
+			//sqlSession.rollback();
 			return count;
 		} finally {
 			sqlSession.close();
@@ -67,6 +76,7 @@ public class MySqlProjectDao implements ProjectDao {
 	public Project selectOne(int no) throws Exception { 
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		try {
+			//selectOne() : 두 번째 매개변수로 int 값 전달(컴파일 시 Integer 객체로 자동 포장(Auto-boxing) : new Integer(no))
 			return sqlSession.selectOne("spms.dao.ProjectDao.selectOne", no);
 		} finally {
 			sqlSession.close();
@@ -81,7 +91,9 @@ public class MySqlProjectDao implements ProjectDao {
 	public int update(Project project) throws Exception { 
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		try {
+			//update() : 두 번째 매개변수로 프로젝트 정보 담은 값 객체 전달
 			int count = sqlSession.update("spms.dao.ProjectDao.update", project);
+			//임시 데이터베이스에 보관된 작업 결과를 운영 데이터베이스에 적용
 			sqlSession.commit();
 			return count;
 		} finally {
@@ -97,7 +109,9 @@ public class MySqlProjectDao implements ProjectDao {
 	public int delete(int no) throws Exception {  
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		try {
+			//delete() : 두 번째 매개변수로 int 값 전달(컴파일 시 Integer 객체로 자동 포장(Auto-boxing) : new Integer(no))
 			int count = sqlSession.delete("spms.dao.ProjectDao.delete", no);
+			//임시 데이터베이스에 보관된 작업 결과를 운영 데이터베이스에 적용
 			sqlSession.commit();
 			return count;
 		} finally {
