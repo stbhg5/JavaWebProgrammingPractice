@@ -123,4 +123,5 @@
   <a href="https://stbhg5.tistory.com/115" >101. 퍼시스턴스 프레임워크의 도입 도입부 및 환경설정</a><br/>
   <a href="https://stbhg5.tistory.com/116" >102. mybatis 소개</a><br/>
   <a href="https://stbhg5.tistory.com/117" >103. mybatis 적용 (1)</a><br/>
+  <a href="https://stbhg5.tistory.com/118" >104. mybatis 적용 (2)</a><br/>
   <br/><br/>
