@@ -13,7 +13,7 @@ import org.reflections.Reflections;
 
 import spms.annotation.Component;
 
-//프로퍼티 파일을 이용한 객체 준비
+//mybatis 적용에 필요한 변경
 public class ApplicationContext {
 	//객체 저장할 보관소
 	Hashtable<String,Object> objTable = new Hashtable<String,Object>();
@@ -22,7 +22,71 @@ public class ApplicationContext {
 	public Object getBean(String key) {
 		return objTable.get(key);
 	}
+	
+	/**
+	 * 외부에서 생성한 객체 등록
+	 * @param name : 객체 이름
+	 * @param obj : 객체 주소
+	 */
+	public void addBean(String name, Object obj) {
+		objTable.put(name, obj);
+	}
+	
+	/**
+	 * 프로퍼티 파일의 내용 로딩 후 객체 준비 메서드
+	 * @param propertiesPath : 프로퍼티 파일의 경로
+	 * @throws Exception
+	 */
+	public void prepareObjectsByProperties(String propertiesPath) throws Exception {
+		//'이름=값'형태로 된 파일 다루는 Properties 클래스
+		Properties props = new Properties();
+		//load() : FileReader를 통해 읽어드린 프로퍼티 내용 키-값 형태로 내부 맵에 보관
+		props.load(new FileReader(propertiesPath));
+		//JNDI 객체 찾을 때 사용할 InitialContext 준비
+		Context ctx = new InitialContext();
+		String key = null;
+		String value = null;
+		for(Object item : props.keySet()) {
+			key = (String)item;
+			value = props.getProperty(key);
+			if(key.startsWith("jndi.")) {
+				//lookup() : JNDI 인터페이스 통해 톰캣 서버에 등록된 객체 찾음
+				objTable.put(key, ctx.lookup(value));
+			}else {//사용안함
+				//Class.forName() 호출하여 클래스 로딩하고, newInstance() 사용하여 인스턴스 생성
+				objTable.put(key, Class.forName(value).newInstance());
+			}
+		}
+	}
+	
+	/**
+	 * 어노테이션이 붙은 클래스를 찾아 객체 준비 메서드
+	 * @param basePackage : 어노테이션을 검색할 패키지 이름
+	 * @throws Exception
+	 */
+	public void prepareObjectsByAnnotation(String basePackage) throws Exception {
+		Reflections reflector = new Reflections(basePackage);
+		Set<Class<?>> list = reflector.getTypesAnnotatedWith(Component.class);
+		String key = null;
+		for(Class<?> clazz : list) {
+			key = clazz.getAnnotation(Component.class).value();
+			objTable.put(key, clazz.newInstance());
+		}
+	}
+	
+	/**
+	 * 각 객체가 필요로 하는 의존 객체 주입 메서드
+	 * @throws Exception
+	 */
+	public void injectDependency() throws Exception {
+		for(String key : objTable.keySet()) {
+			if(!key.startsWith("jndi.")) {
+				callSetter(objTable.get(key));
+			}
+		}
+	}
 
+/*
 	//ApplicationContext 클래스의 생성자
 	public ApplicationContext(String propertiesPath) throws Exception {
 		//'이름=값'형태로 된 파일 다루는 Properties 클래스
@@ -68,7 +132,7 @@ public class ApplicationContext {
 			objTable.put(key, clazz.newInstance());
 		}
 	}
-
+	
 	//각 객체가 필요로 하는 의존 객체 주입 메서드
 	private void injectDependency() throws Exception {
 		for(String key : objTable.keySet()) {
@@ -77,6 +141,7 @@ public class ApplicationContext {
 			}
 		}
 	}
+*/
 
 	//매개변수로 주어진 객체에 대해 셋터 메서드 찾아서 호출
 	private void callSetter(Object obj) throws Exception {
