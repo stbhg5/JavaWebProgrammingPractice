@@ -13,24 +13,24 @@
 		<result column="CRE_DATE" property="createdDate" javaType="java.sql.Date"/>
 		<result column="TAGS"     property="tags"/>
 	</resultMap>
-  
+
 	<select id="selectList" resultMap="projectResultMap">
 		SELECT PNO, PNAME, STA_DATE, END_DATE, STATE
 		FROM PROJECTS
 		ORDER BY PNO DESC
 	</select>
-  
+
 	<insert id="insert" parameterType="project">
 		INSERT INTO PROJECTS (PNAME, CONTENT, STA_DATE, END_DATE, STATE, CRE_DATE, TAGS)
 		VALUES (#{title}, #{content}, #{startDate}, #{endDate}, 0, now(), #{tags})
 	</insert>
-  
-	<select id="selectOne" parameterType="int" resultMap="projectResultMap">
+
+	<select id="selectOne" resultMap="projectResultMap" parameterType="int">
 		SELECT PNO, PNAME, CONTENT, STA_DATE, END_DATE, STATE, CRE_DATE, TAGS
-		FROM PROJECTS 
+		FROM PROJECTS
 		WHERE PNO = #{value}
 	</select>
-  
+
 	<update id="update" parameterType="project">
 		UPDATE PROJECTS
 		SET PNAME = #{title}
@@ -41,9 +41,9 @@
 			,TAGS = #{tags}
 		WHERE PNO = #{no}
 	</update>
-  
+
 	<delete id="delete" parameterType="int">
-		DELETE FROM PROJECTS 
+		DELETE FROM PROJECTS
 		WHERE PNO = #{value}
 	</delete>
 </mapper>
