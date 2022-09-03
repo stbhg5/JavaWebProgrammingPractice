@@ -4,12 +4,12 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<properties resource="spms/dao/db.properties"/>
-  
+
 	<typeAliases>
 		<typeAlias type="spms.vo.Project" alias="project"/>
 		<typeAlias type="spms.vo.Member" alias="member"/>
 	</typeAliases>
-  
+
 	<environments default="development">
 		<environment id="development">
 			<transactionManager type="JDBC"/>
@@ -21,7 +21,7 @@
 			</dataSource>
 		</environment>
 	</environments>
-  
+
 	<mappers>
 		<mapper resource="spms/dao/MySqlProjectDao.xml"/>
 	</mappers>
