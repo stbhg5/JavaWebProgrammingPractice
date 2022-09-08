@@ -99,7 +99,7 @@ public class MySqlProjectDao implements ProjectDao {
 		} finally {
 			sqlSession.close();
 		}
-	}  
+	}
 
 	/**
 	 * 프로젝트 삭제
