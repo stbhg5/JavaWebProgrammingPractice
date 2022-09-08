@@ -128,4 +128,6 @@
   <a href="https://stbhg5.tistory.com/120" >106. mybatis 적용 (4)</a><br/>
   <a href="https://stbhg5.tistory.com/121" >107. SQL 맵퍼 파일 (1)</a><br/>
   <a href="https://stbhg5.tistory.com/122" >108. SQL 맵퍼 파일 (2)</a><br/>
+  <a href="https://stbhg5.tistory.com/123" >109. mybatis 설정 파일 (1)</a><br/>
+  <a href="https://stbhg5.tistory.com/124" >110. mybatis 설정 파일 (2)</a><br/>
   <br/><br/>
