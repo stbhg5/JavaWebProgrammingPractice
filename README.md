@@ -132,4 +132,5 @@
   <a href="https://stbhg5.tistory.com/124" >110. mybatis 설정 파일 (2)</a><br/>
   <a href="https://stbhg5.tistory.com/125" >111. mybatis 설정 파일 (3)</a><br/>
   <a href="https://stbhg5.tistory.com/126" >112. 로그 출력 켜기 (1)</a><br/>
+  <a href="https://stbhg5.tistory.com/127" >113. 로그 출력 켜기 (2)</a><br/>
   <br/><br/>
