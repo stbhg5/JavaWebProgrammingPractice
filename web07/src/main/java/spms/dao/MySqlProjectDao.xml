@@ -14,10 +14,22 @@
 		<result column="TAGS"     property="tags"/>
 	</resultMap>
 
-	<select id="selectList" resultMap="projectResultMap">
+	<select id="selectList" resultMap="projectResultMap" parameterType="map">
 		SELECT PNO, PNAME, STA_DATE, END_DATE, STATE
 		FROM PROJECTS
-		ORDER BY PNO DESC
+		ORDER BY
+		<choose> 
+			<when test="orderCond == 'TITLE_ASC'">PNAME ASC</when>
+			<when test="orderCond == 'TITLE_DESC'">PNAME DESC</when>
+			<when test="orderCond == 'STARTDATE_ASC'">STA_DATE ASC</when>
+			<when test="orderCond == 'STARTDATE_DESC'">STA_DATE DESC</when>
+			<when test="orderCond == 'ENDDATE_ASC'">END_DATE ASC</when>
+			<when test="orderCond == 'ENDDATE_DESC'">END_DATE DESC</when>
+			<when test="orderCond == 'STATE_ASC'">STATE ASC</when>
+			<when test="orderCond == 'STATE_DESC'">STATE DESC</when>
+			<when test="orderCond == 'PNO_ASC'">PNO ASC</when>
+			<otherwise>PNO DESC</otherwise>
+		</choose>
 	</select>
 
 	<insert id="insert" parameterType="project">
