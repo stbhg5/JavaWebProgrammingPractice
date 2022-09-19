@@ -134,4 +134,5 @@
   <a href="https://stbhg5.tistory.com/126" >112. 로그 출력 켜기 (1)</a><br/>
   <a href="https://stbhg5.tistory.com/127" >113. 로그 출력 켜기 (2)</a><br/>
   <a href="https://stbhg5.tistory.com/128" >114. 동적 SQL의 사용 (1)</a><br/>
+  <a href="https://stbhg5.tistory.com/129" >115. 동적 SQL의 사용 (2)</a><br/>
   <br/><br/>
