@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -34,12 +35,12 @@ public class MySqlProjectDao implements ProjectDao {
 	 * 프로젝트 목록 조회
 	 * @return sqlSession.selectList("spms.dao.ProjectDao.selectList")
 	 */
-	public List<Project> selectList() throws Exception {
+	public List<Project> selectList(HashMap<String,Object> paramMap) throws Exception {
 		//SqlSession : SQL 실행하는 도구, sqlSessionFactory 객체 통해서만 얻을 수 있다
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		try {
 			//selectList() : 여러 개의 결과 반환하는 SELECT문 실행시 호출
-			return sqlSession.selectList("spms.dao.ProjectDao.selectList");
+			return sqlSession.selectList("spms.dao.ProjectDao.selectList", paramMap);
 		} finally {
 			//close() : SQL문 실행할 때 사용한 자원 해제
 			sqlSession.close();
