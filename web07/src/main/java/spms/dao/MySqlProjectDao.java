@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -92,11 +93,38 @@ public class MySqlProjectDao implements ProjectDao {
 	public int update(Project project) throws Exception { 
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		try {
-			//update() : 두 번째 매개변수로 프로젝트 정보 담은 값 객체 전달
-			int count = sqlSession.update("spms.dao.ProjectDao.update", project);
-			//임시 데이터베이스에 보관된 작업 결과를 운영 데이터베이스에 적용
-			sqlSession.commit();
-			return count;
+			Project original = sqlSession.selectOne("spms.dao.ProjectDao.selectOne", project.getNo());
+			Hashtable<String,Object> paramMap = new Hashtable<String,Object>();
+			if(!project.getTitle().equals(original.getTitle())) {
+				paramMap.put("title", project.getTitle());
+			}
+			if(!project.getContent().equals(original.getContent())) {
+				paramMap.put("content", project.getContent());
+			}
+			if(project.getStartDate().compareTo(original.getStartDate()) != 0) {
+				paramMap.put("startDate", project.getStartDate());
+			}
+			if(project.getEndDate().compareTo(original.getEndDate()) != 0) {
+				paramMap.put("endDate", project.getEndDate());
+			}
+			if(project.getState() != original.getState()) {
+				paramMap.put("state", project.getState());
+			}
+			if(!project.getTags().equals(original.getTags())) {
+				paramMap.put("tags", project.getTags());
+			}
+			
+			if(paramMap.size() > 0) {
+				paramMap.put("no", project.getNo());
+				//update() : 두 번째 매개변수로 프로젝트 정보 담은 값 객체 전달
+				//int count = sqlSession.update("spms.dao.ProjectDao.update", project);
+				int count = sqlSession.update("spms.dao.ProjectDao.update", paramMap);
+				//임시 데이터베이스에 보관된 작업 결과를 운영 데이터베이스에 적용
+				sqlSession.commit();
+				return count;
+			}else {
+	    		return 0;
+	    	}
 		} finally {
 			sqlSession.close();
 		}

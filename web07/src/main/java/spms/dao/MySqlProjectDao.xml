@@ -45,12 +45,14 @@
 
 	<update id="update" parameterType="project">
 		UPDATE PROJECTS
-		SET PNAME = #{title}
-			,CONTENT = #{content}
-			,STA_DATE = #{startDate}
-			,END_DATE = #{endDate}
-			,STATE = #{state}
-			,TAGS = #{tags}
+		<set>
+			<if test="title != null">PNAME = #{title},</if>
+			<if test="content != null">CONTENT = #{content},</if>
+			<if test="startDate != null">STA_DATE = #{startDate},</if>
+			<if test="endDate != null">END_DATE = #{endDate},</if>
+			<if test="state != null">STATE = #{state},</if>
+			<if test="tags != null">TAGS = #{tags}</if>
+		</set>
 		WHERE PNO = #{no}
 	</update>
 
