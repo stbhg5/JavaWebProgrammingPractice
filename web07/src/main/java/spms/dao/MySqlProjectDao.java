@@ -113,7 +113,6 @@ public class MySqlProjectDao implements ProjectDao {
 			if(!project.getTags().equals(original.getTags())) {
 				paramMap.put("tags", project.getTags());
 			}
-			
 			if(paramMap.size() > 0) {
 				paramMap.put("no", project.getNo());
 				//update() : 두 번째 매개변수로 프로젝트 정보 담은 값 객체 전달
