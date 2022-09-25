@@ -29,6 +29,7 @@ public class ProjectListController implements Controller, DataBinding {
 	@Override
 	public String execute(Map<String, Object> model) throws Exception {
 		HashMap<String,Object> paramMap = new HashMap<String,Object>();
+		//정렬조건 전달 Map
 	  	paramMap.put("orderCond", model.get("orderCond"));
 		model.put("projects", projectDao.selectList(paramMap));
 		return "/project/ProjectList.jsp";

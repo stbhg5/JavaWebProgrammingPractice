@@ -32,5 +32,6 @@
 
 	<mappers>
 		<mapper resource="spms/dao/MySqlProjectDao.xml"/>
+		<mapper resource="spms/dao/MySqlMemberDao.xml"/>
 	</mappers>
 </configuration>

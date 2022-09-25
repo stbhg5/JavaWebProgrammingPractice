@@ -34,7 +34,9 @@ public class MySqlProjectDao implements ProjectDao {
 	
 	/**
 	 * 프로젝트 목록 조회
+	 * @param paramMap
 	 * @return sqlSession.selectList("spms.dao.ProjectDao.selectList")
+	 * @throws Exception
 	 */
 	public List<Project> selectList(HashMap<String,Object> paramMap) throws Exception {
 		//SqlSession : SQL 실행하는 도구, sqlSessionFactory 객체 통해서만 얻을 수 있다
@@ -93,8 +95,11 @@ public class MySqlProjectDao implements ProjectDao {
 	public int update(Project project) throws Exception { 
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		try {
+			//원래의 프로젝트 정보 가져옴
 			Project original = sqlSession.selectOne("spms.dao.ProjectDao.selectOne", project.getNo());
+			//바뀐 값 저장할 Map 객체
 			Hashtable<String,Object> paramMap = new Hashtable<String,Object>();
+			//원래의 값과 사용자가 입력한 값 비교
 			if(!project.getTitle().equals(original.getTitle())) {
 				paramMap.put("title", project.getTitle());
 			}
@@ -113,7 +118,7 @@ public class MySqlProjectDao implements ProjectDao {
 			if(!project.getTags().equals(original.getTags())) {
 				paramMap.put("tags", project.getTags());
 			}
-			if(paramMap.size() > 0) {
+			if(paramMap.size() > 0) {//바뀐값O
 				paramMap.put("no", project.getNo());
 				//update() : 두 번째 매개변수로 프로젝트 정보 담은 값 객체 전달
 				//int count = sqlSession.update("spms.dao.ProjectDao.update", project);
@@ -121,7 +126,7 @@ public class MySqlProjectDao implements ProjectDao {
 				//임시 데이터베이스에 보관된 작업 결과를 운영 데이터베이스에 적용
 				sqlSession.commit();
 				return count;
-			}else {
+			}else {//바뀐값X
 	    		return 0;
 	    	}
 		} finally {

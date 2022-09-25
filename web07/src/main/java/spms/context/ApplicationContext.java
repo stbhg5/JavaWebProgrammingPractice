@@ -15,6 +15,7 @@ import spms.annotation.Component;
 
 //mybatis 적용에 필요한 변경
 public class ApplicationContext {
+	
 	//객체 저장할 보관소
 	Hashtable<String,Object> objTable = new Hashtable<String,Object>();
 
@@ -167,4 +168,5 @@ public class ApplicationContext {
 		}
 		return null;
 	}
+	
 }

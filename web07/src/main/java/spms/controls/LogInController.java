@@ -45,7 +45,7 @@ public class LogInController implements Controller, DataBinding {//Map 객체에
 		Member loginInfo = (Member)model.get("loginInfo");
 	    if(loginInfo.getEmail() == null) {//입력폼을 요청할 때
 	    	return "/auth/LogInForm.jsp";
-	    }else {//회원 등록을 요청할 때
+	    }else {//회원 로그인을 요청할 때
 	    	Member member = memberDao.exist(loginInfo.getEmail(), loginInfo.getPassword());
 	    	if(member != null) {
 	    		HttpSession session = (HttpSession)model.get("session");
