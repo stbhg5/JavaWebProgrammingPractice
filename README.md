@@ -138,4 +138,5 @@
   <a href="https://stbhg5.tistory.com/130" >116. 동적 SQL의 사용 (3)</a><br/>
   <a href="https://stbhg5.tistory.com/131" >117. 동적 SQL의 사용 (4)</a><br/>
   <a href="https://stbhg5.tistory.com/132" >118. 동적 SQL의 사용 (5)</a><br/>
+  <a href="https://stbhg5.tistory.com/133" >119. 실력 향상 훈련</a><br/>
   <br/><br/>
