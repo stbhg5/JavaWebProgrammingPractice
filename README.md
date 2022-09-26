@@ -139,4 +139,8 @@
   <a href="https://stbhg5.tistory.com/131" >117. 동적 SQL의 사용 (4)</a><br/>
   <a href="https://stbhg5.tistory.com/132" >118. 동적 SQL의 사용 (5)</a><br/>
   <a href="https://stbhg5.tistory.com/133" >119. 실력 향상 훈련</a><br/>
+  <a href="https://stbhg5.tistory.com/134" >120. 퍼시스턴스 프레임워크의 도입 정리</a><br/>
+  <br/><br/>
+
+<h2>제 8장 스프링 IoC 컨테이너<h2/><br/>
   <br/><br/>
