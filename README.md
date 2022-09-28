@@ -144,4 +144,5 @@
 
 <h2>제 8장 스프링 IoC 컨테이너<h2/><br/>
   <a href="https://stbhg5.tistory.com/135" >121. Gradle</a><br/>
+  <a href="https://stbhg5.tistory.com/136" >122. Groovy</a><br/>
   <br/><br/>
