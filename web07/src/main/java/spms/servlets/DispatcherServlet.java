@@ -27,6 +27,7 @@ import spms.vo.Member;
 @SuppressWarnings("serial")
 @WebServlet("*.do") //프런트 컨트롤러의 배치
 public class DispatcherServlet extends HttpServlet {//서블릿이기 때문에 HttpServlet 상속
+	
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html; charset=UTF-8");
@@ -93,4 +94,5 @@ public class DispatcherServlet extends HttpServlet {//서블릿이기 때문에 
 			model.put(dataName, dataObj);
 		}
 	}
+	
 }
