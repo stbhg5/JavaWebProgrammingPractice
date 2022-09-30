@@ -105,7 +105,7 @@ public class ApplicationContext {
 		Context ctx = new InitialContext();
 		String key = null;
 		String value = null;
-    
+
 		for(Object item : props.keySet()) {
 			key = (String)item;
 			value = props.getProperty(key);
