@@ -250,7 +250,7 @@ public class MySqlProjectDao implements ProjectDao {
 			try {if(connection != null) connection.close();} catch(Exception e) {}
 		}
 	}
-
+	
 	//프로젝트 수정
 	@Override
 	public int update(Project project) throws Exception {
