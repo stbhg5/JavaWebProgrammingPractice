@@ -276,7 +276,7 @@ public class MySqlProjectDao implements ProjectDao {
 			try {if(connection != null) connection.close();} catch(Exception e) {}
 		}
 	}
-
+	
 	//프로젝트 삭제
 	@Override
 	public int delete(int no) throws Exception {
