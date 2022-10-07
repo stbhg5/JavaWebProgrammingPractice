@@ -216,7 +216,7 @@ public class MySqlProjectDao implements ProjectDao {
 			try {if(connection != null) connection.close();} catch(Exception e) {}
 		}
 	}
-
+	
 	//프로젝트 상세정보 조회
 	@Override
 	public Project selectOne(int no) throws Exception {
