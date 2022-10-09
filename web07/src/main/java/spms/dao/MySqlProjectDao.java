@@ -192,7 +192,7 @@ public class MySqlProjectDao implements ProjectDao {
 			try {if(connection != null) connection.close();} catch(Exception e) {}
 		}
 	}
-
+	
 	//프로젝트 등록
 	@Override
 	public int insert(Project project) throws Exception {
