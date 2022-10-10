@@ -149,4 +149,5 @@
   <a href="https://stbhg5.tistory.com/139" >124. 스프링 IoC 컨테이너 도입부 및 스프링 IoC 컨테이너 사용 준비 (1)</a><br/>
   <a href="https://stbhg5.tistory.com/140" >125. 스프링 IoC 컨테이너 사용 준비 (2)</a><br/>
   <a href="https://stbhg5.tistory.com/141" >126. 스프링 IoC 컨테이너 사용 준비 (3)</a><br/>
+  <a href="https://stbhg5.tistory.com/143" >127. 스프링 IoC 컨테이너 사용 준비 (4)</a><br/>
   <br/><br/>
