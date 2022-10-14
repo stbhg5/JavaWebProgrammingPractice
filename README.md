@@ -153,4 +153,5 @@
   <a href="https://stbhg5.tistory.com/144" >128. Gradle 빌드 파일 분석 (1)</a><br/>
   <a href="https://stbhg5.tistory.com/145" >129. Gradle 빌드 파일 분석 (2)</a><br/>
   <a href="https://stbhg5.tistory.com/146" >130. Gradle 빌드 파일 분석 (3)</a><br/>
+  <a href="https://stbhg5.tistory.com/147" >131. XML 기반 빈 관리 컨테이너 (1)</a><br/>
   <br/><br/>
