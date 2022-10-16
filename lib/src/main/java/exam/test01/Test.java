@@ -13,5 +13,5 @@ public class Test {
 		System.out.println("합계:" + score.sum());
 		System.out.println("평균:" + score.average());
 	}
-	
+
 }
