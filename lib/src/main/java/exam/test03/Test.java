@@ -19,8 +19,8 @@ public class Test {
 		}
 		
 		System.out.println("[exam.test03.Score#1의 별명 출력]");
-		for(String alias : ctx.getAliases("exam.test03.Score#1")) {//별명 없음
-			System.out.println(alias);
+		for(String alias1 : ctx.getAliases("exam.test03.Score#1")) {//별명 없음
+			System.out.println(alias1);
 		}
 		
 		System.out.println("[익명 빈 꺼내기]");
