@@ -156,4 +156,5 @@
   <a href="https://stbhg5.tistory.com/147" >131. XML 기반 빈 관리 컨테이너 (1)</a><br/>
   <a href="https://stbhg5.tistory.com/148" >132. XML 기반 빈 관리 컨테이너 (2)</a><br/>
   <a href="https://stbhg5.tistory.com/149" >133. XML 기반 빈 관리 컨테이너 (3)</a><br/>
+  <a href="https://stbhg5.tistory.com/150" >134. XML 기반 빈 관리 컨테이너 (4)</a><br/>
   <br/><br/>
