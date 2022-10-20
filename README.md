@@ -158,4 +158,5 @@
   <a href="https://stbhg5.tistory.com/149" >133. XML 기반 빈 관리 컨테이너 (3)</a><br/>
   <a href="https://stbhg5.tistory.com/150" >134. XML 기반 빈 관리 컨테이너 (4)</a><br/>
   <a href="https://stbhg5.tistory.com/151" >135. 생성자와 프로퍼티 설정 (1)</a><br/>
+  <a href="https://stbhg5.tistory.com/152" >136. 생성자와 프로퍼티 설정 (2)</a><br/>
   <br/><br/>
