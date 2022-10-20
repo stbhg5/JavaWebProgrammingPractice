@@ -1,4 +1,4 @@
-package exam.test04;
+package exam.test05;
 
 public class Score {
 	

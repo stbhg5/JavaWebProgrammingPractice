@@ -6,34 +6,27 @@ public class Test {
 	
 	public static void main(String[] args) {
 		//IoC 컨테이너 준비하여 빈 생성
-		ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("exam/test03/beans.xml");
+		ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("exam/test04/beans.xml");
 		
-		System.out.println("[컨테이너에 보관된 객체의 이름 출력]");
-		for(String name : ctx.getBeanDefinitionNames()) {
-			System.out.println(name);
-		}
+		Score score1 = (Score)ctx.getBean("score1");
+		System.out.println(score1);
+		//System.out.println(score1.name + ", " + score1.kor + ", " + score1.eng + ", " + score1.math);
 		
-		System.out.println("[exam.test03.Score#0의 별명 출력]");
-		for(String alias : ctx.getAliases("exam.test03.Score#0")) {
-			System.out.println(alias);
-		}
+		Score score2 = (Score)ctx.getBean("score2");
+		System.out.println(score2);
+		//System.out.println(score2.name + ", " + score2.kor + ", " + score2.eng + ", " + score2.math);
 		
-		System.out.println("[exam.test03.Score#1의 별명 출력]");
-		for(String alias1 : ctx.getAliases("exam.test03.Score#1")) {//별명 없음
-			System.out.println(alias1);
-		}
+		Score score3 = (Score)ctx.getBean("score3");
+		System.out.println(score3);
+		//System.out.println(score3.name + ", " + score3.kor + ", " + score3.eng + ", " + score3.math);
 		
-		System.out.println("[익명 빈 꺼내기]");
-		Score score1 = (Score)ctx.getBean("exam.test03.Score");
-		Score score2 = (Score)ctx.getBean("exam.test03.Score#0");
-		if(score1 == score2) System.out.println("score == score#0");
+		Score score4 = (Score)ctx.getBean("score4");
+		System.out.println(score4);
+		//System.out.println(score4.name + ", " + score4.kor + ", " + score4.eng + ", " + score4.math);
 		
-		System.out.println("[두 번째로 선언된 익명 빈과 비교]");
-		Score score3 = (Score)ctx.getBean("exam.test03.Score#1");
-		if(score1 != score3) System.out.println("score != score#1");
-		
-		System.out.println("[클래스 타입으로 빈 꺼내기]");
-		Score score4 = (Score)ctx.getBean(exam.test03.Score.class);
+		Score score5 = (Score)ctx.getBean("score5");
+		System.out.println(score5);
+		//System.out.println(score5.name + ", " + score5.kor + ", " + score5.eng + ", " + score5.math);
 	}
 	
 }
