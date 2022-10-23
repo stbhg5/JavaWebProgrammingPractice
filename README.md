@@ -160,4 +160,5 @@
   <a href="https://stbhg5.tistory.com/151" >135. 생성자와 프로퍼티 설정 (1)</a><br/>
   <a href="https://stbhg5.tistory.com/152" >136. 생성자와 프로퍼티 설정 (2)</a><br/>
   <a href="https://stbhg5.tistory.com/153" >137. 생성자와 프로퍼티 설정 (3)</a><br/>
+  <a href="https://stbhg5.tistory.com/155?category=910651" >138. 의존 객체 주입 (1)</a><br/>
   <br/><br/>
