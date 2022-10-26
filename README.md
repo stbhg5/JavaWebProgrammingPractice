@@ -163,4 +163,5 @@
   <a href="https://stbhg5.tistory.com/155?category=910651" >138. 의존 객체 주입 (1)</a><br/>
   <a href="https://stbhg5.tistory.com/156" >139. 의존 객체 주입 (2)</a><br/>
   <a href="https://stbhg5.tistory.com/157" >140. 컬렉션 값 주입 (1)</a><br/>
+  <a href="https://stbhg5.tistory.com/158?category=910651" >141. 컬렉션 값 주입 (2)</a><br/>
   <br/><br/>
