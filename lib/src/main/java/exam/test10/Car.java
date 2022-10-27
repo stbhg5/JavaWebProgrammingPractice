@@ -47,7 +47,7 @@ public class Car {
 	public void setOptions(Map<String, Object> options) {
 		this.options = options;
 	}
-
+	
 	@Override
 	public String toString() {
 		StringBuffer carInfo = new StringBuffer();
