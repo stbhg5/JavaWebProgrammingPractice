@@ -43,7 +43,7 @@ public class Car {
 	public Map<String, Object> getOptions() {
 		return options;
 	}
-
+	
 	public void setOptions(Map<String, Object> options) {
 		this.options = options;
 	}
