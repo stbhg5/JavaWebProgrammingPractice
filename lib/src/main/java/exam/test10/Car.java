@@ -35,7 +35,7 @@ public class Car {
 	public Tire[] getTires() {
 		return tires;
 	}
-
+	
 	public void setTires(Tire[] tires) {
 		this.tires = tires;
 	}
