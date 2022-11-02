@@ -9,9 +9,9 @@
 	<bean id="hankookTire" class="exam.test11.TireFactory" factory-method="createTire">
 		<constructor-arg value="Hankook"/>
 	</bean>
-	
+
 	<bean id="kumhoTire" class="exam.test11.TireFactory" factory-method="createTire">
 		<constructor-arg value="Kumho"/>
 	</bean>
-	
+
 </beans>
