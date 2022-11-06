@@ -5,13 +5,13 @@
     xmlns:c="http://www.springframework.org/schema/c"
  	xsi:schemaLocation="http://www.springframework.org/schema/beans
 						http://www.springframework.org/schema/beans/spring-beans.xsd">
-
-	<bean id="hankookTire" class="exam.test11.TireFactory" factory-method="createTire">
-		<constructor-arg value="Hankook"/>
+						
+	<bean id="hankookTire" class="exam.test13.TireFactoryBean">
+		<property name="maker" value="Hankook"/>
 	</bean>
 
-	<bean id="kumhoTire" class="exam.test11.TireFactory" factory-method="createTire">
-		<constructor-arg value="Kumho"/>
+	<bean id="kumhoTire" class="exam.test13.TireFactoryBean">
+		<property name="maker" value="Kumho"/>
 	</bean>
 
 </beans>
