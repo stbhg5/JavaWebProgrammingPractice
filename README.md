@@ -166,4 +166,6 @@
   <a href="https://stbhg5.tistory.com/158?category=910651" >141. 컬렉션 값 주입 (2)</a><br/>
   <a href="https://stbhg5.tistory.com/160" >142. 팩토리 메서드와 팩토리 빈 (1)</a><br/>
   <a href="https://stbhg5.tistory.com/162" >143. 팩토리 메서드와 팩토리 빈 (2)</a><br/>
+  <a href="https://stbhg5.tistory.com/163" >144. 빈의 범위 설정</a><br/>
+  <a href="https://stbhg5.tistory.com/164" >145. 날짜 값 주입 (1)</a><br/>
   <br/><br/>
