@@ -32,6 +32,22 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	
+	//MyBatis
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.0'
+	
+	//Log4j
+	implementation 'org.apache.logging.log4j:log4j-api:2.19.0'
+	implementation 'org.apache.logging.log4j:log4j-core:2.19.0'
+	
+	//Reflections
+	implementation 'org.reflections:reflections:0.9.5-RC2'
+	
+	//Servlet API
+	compileOnly 'javax.servlet:javax.servlet-api:3.0.1'
+	
+	//JSTL
+	implementation 'javax.servlet:jstl:1.2'
+	
 	implementation 'org.springframework.kafka:spring-kafka'
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'com.h2database:h2'
