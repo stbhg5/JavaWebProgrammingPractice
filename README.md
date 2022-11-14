@@ -173,4 +173,5 @@
   <a href="https://stbhg5.tistory.com/167" >148. 어노테이션을 이용한 의존 객체 자동 주입 (2)</a><br/>
   <a href="https://stbhg5.tistory.com/168" >149. 빈 자동 등록</a><br/>
   <a href="https://stbhg5.tistory.com/170" >150. Gradle 적용</a><br/>
+  <a href="https://stbhg5.tistory.com/171" >151. 스프링 IoC 컨테이너 적용 (1)</a><br/>
   <br/><br/>
