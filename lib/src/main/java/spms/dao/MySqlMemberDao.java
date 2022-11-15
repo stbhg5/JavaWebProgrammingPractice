@@ -7,16 +7,23 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
-import spms.annotation.Component;
+//import spms.annotation.Component;
+import org.springframework.stereotype.Component;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
 import spms.vo.Member;
 
+//스프링 어노테이션(@Component)으로 변경
 @Component("memberDao")
 public class MySqlMemberDao implements MemberDao {
-  SqlSessionFactory sqlSessionFactory;
+	
+	SqlSessionFactory sqlSessionFactory;
 
-  public void setSqlSessionFactory(SqlSessionFactory sqlSessionFactory) {
-    this.sqlSessionFactory = sqlSessionFactory;
-  }
+	@Autowired
+	public void setSqlSessionFactory(SqlSessionFactory sqlSessionFactory) {
+		this.sqlSessionFactory = sqlSessionFactory;
+	}
 
   public List<Member> selectList(HashMap<String,Object> paramMap) 
   		throws Exception {

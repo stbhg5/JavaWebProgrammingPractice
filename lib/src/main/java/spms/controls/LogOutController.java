@@ -4,9 +4,9 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
-import spms.annotation.Component;
+import org.springframework.stereotype.Component;
 
-// Annotation 적용
+//스프링 애노테이션(@Component)으로 변경
 @Component("/auth/logout.do")
 public class LogOutController implements Controller {
   @Override

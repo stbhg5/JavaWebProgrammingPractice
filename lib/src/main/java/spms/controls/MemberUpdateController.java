@@ -2,16 +2,19 @@ package spms.controls;
 
 import java.util.Map;
 
-import spms.annotation.Component;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import spms.bind.DataBinding;
 import spms.dao.MemberDao;
 import spms.vo.Member;
 
-// Annotation 적용
+//스프링 애노테이션(@Component)으로 변경
 @Component("/member/update.do")
 public class MemberUpdateController implements Controller, DataBinding {
   MemberDao memberDao;
   
+  @Autowired
   public MemberUpdateController setMemberDao(MemberDao memberDao) {
     this.memberDao = memberDao;
     return this;

@@ -3,14 +3,18 @@ package spms.controls;
 import java.util.HashMap;
 import java.util.Map;
 
-import spms.annotation.Component;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import spms.bind.DataBinding;
 import spms.dao.MemberDao;
 
+//스프링 애노테이션(@Component)으로 변경
 @Component("/member/list.do")
 public class MemberListController implements Controller, DataBinding {
   MemberDao memberDao;
   
+  @Autowired
   public MemberListController setMemberDao(MemberDao memberDao) {
     this.memberDao = memberDao;
     return this;

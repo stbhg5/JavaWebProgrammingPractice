@@ -12,18 +12,18 @@ import javax.servlet.http.HttpServletResponse;
 
 import spms.bind.DataBinding;
 import spms.bind.ServletRequestDataBinder;
-import spms.context.ApplicationContext;
+//import spms.context.ApplicationContext;
+import org.springframework.context.ApplicationContext;
 import spms.controls.Controller;
 import spms.listeners.ContextLoaderListener;
 
-// 페이지 컨트롤러를 찾을 때 ApplicationContext의 사용
+//스프링 IoC 컨테이너 사용
 @SuppressWarnings("serial")
 @WebServlet("*.do")
 public class DispatcherServlet extends HttpServlet {
+	
   @Override
-  protected void service(
-      HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
+  protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     response.setContentType("text/html; charset=UTF-8");
     String servletPath = request.getServletPath();
     try {
