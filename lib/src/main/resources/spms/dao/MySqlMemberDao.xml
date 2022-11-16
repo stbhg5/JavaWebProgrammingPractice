@@ -12,7 +12,7 @@
     <result column="CRE_DATE" property="createdDate" javaType="java.sql.Date"/>
     <result column="MOD_DATE" property="modifiedDate" javaType="java.sql.Date"/>
   </resultMap>
-  
+
   <select id="selectList" parameterType="map" resultMap="memberResultMap">
     select MNO, MNAME, EMAIL, CRE_DATE
     from MEMBERS
